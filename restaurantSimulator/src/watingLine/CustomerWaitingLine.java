@@ -27,6 +27,7 @@ public class CustomerWaitingLine extends WaitingLine<Customer>{
 	@Override
 	public boolean removeLine(Customer index) {
 		// TODO Auto-generated method stub
+		this.getCountList().add(index.getCusWaitTime());
 		return super.removeLine(index);
 	}
 }

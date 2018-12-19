@@ -2,12 +2,12 @@ package watingLine;
 
 import java.util.*;
 
-import restaurantSimulator.Customer;
+import restaurantSimulator.Table;
 
-public class OrderRequestLine extends WaitingLine<Customer>{
+public class OrderRequestLine extends WaitingLine<Table>{
 	
 	private OrderRequestLine() {
-		super(new ArrayList<Customer>());
+		super(new ArrayList<Table>());
 	}
 	
 	private static class Singleton {
@@ -19,14 +19,15 @@ public class OrderRequestLine extends WaitingLine<Customer>{
 	}
 
 	@Override
-	public boolean addLine(Customer index) {
+	public boolean addLine(Table index) {
 		// TODO Auto-generated method stub
 		return super.addLine(index);
 	}
 
 	@Override
-	public boolean removeLine(Customer index) {
+	public boolean removeLine(Table index) {
 		// TODO Auto-generated method stub
+		this.getCountList().add(index.getReqWaitTime());
 		return super.removeLine(index);
 	}
 

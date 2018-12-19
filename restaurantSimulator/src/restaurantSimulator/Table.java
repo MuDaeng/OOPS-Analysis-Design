@@ -2,7 +2,7 @@ package restaurantSimulator;
 
 public class Table {
 	private int tableNum;
-	private int reqWaitingTime;
+	private int reqWaitTime;
 	private TableState tableState;
 	private Customer customer;
 	
@@ -17,11 +17,11 @@ public class Table {
 	public void setTableNum(int tableNum) {
 		this.tableNum = tableNum;
 	}
-	public int getReqWaitingTime() {
-		return this.reqWaitingTime;
+	public int getReqWaitTime() {
+		return reqWaitTime;
 	}
-	public void setReqWaitingTime(int reqWaitingTime) {
-		this.reqWaitingTime = reqWaitingTime;
+	public void setReqWaitTime(int reqWaitTime) {
+		this.reqWaitTime = reqWaitTime;
 	}
 	public TableState getTableState() {
 		return this.tableState;

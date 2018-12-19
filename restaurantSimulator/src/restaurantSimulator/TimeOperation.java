@@ -21,18 +21,29 @@ public class TimeOperation {
 	private static class Singleton{
 		private static TimeOperation instance = new TimeOperation();
 	}
-	
 	public static TimeOperation getInstance() {
 		return Singleton.instance;
 	}
-	
-	public int calculateAvg(List waitList) {
+	public int calculateAvg(List<Integer> waitList) {
 		//고치자
-		return 0;
+		int countNum = waitList.size();
+		int value = 0;
+		if(countNum == 0) {
+			System.out.println("잘못됨");
+			return 0;
+		}else {
+			Iterator<Integer> iterator = waitList.iterator();
+			while(iterator.hasNext()) value += iterator.next();
+			return ( value / countNum );
+		}
 	}
-	public int calculateMax(List waitList) {
-		//고치자
-		return 0;
+	public int calculateMax(List<Integer> waitList) {
+		if(waitList.size() == 0) {
+			return 0;
+		}else {
+			waitList.sort(null);
+			return waitList.get(waitList.size()-1);	
+		}
 	}
 
 	public boolean inputResult() {

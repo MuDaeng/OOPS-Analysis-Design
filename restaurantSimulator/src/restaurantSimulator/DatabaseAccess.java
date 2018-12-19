@@ -28,38 +28,20 @@ public class DatabaseAccess {
 	}
 	
 	//catch문이 부실하다 고치자
-	public boolean setData(String sqlQuery, List values) {
+	public boolean setData(String sqlQuery, List values) throws SQLException{
 		int numberOfQm = countQm(sqlQuery);
 		if(numberOfQm != values.size()) {
 			System.out.println("물음표 갯수랑 속성값 갯수가 달라");
 			return false;
 		}
-		try {
-			conn = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
-			pstmt = conn.prepareStatement(sqlQuery);
-			for(int count = 0; count < numberOfQm ; count++) {
-				pstmt.setString(count + 1, values.get(count).toString());
-			}
-			pstmt.executeUpdate();
-			conn.commit();
-		}catch(SQLException SQLe) {
-			try {
-				conn.rollback();
-			}catch(SQLException SQLe1) {
-				throw new RuntimeException(SQLe);
-			}
-		}finally {
-			try {
-				pstmt.clearParameters();
-				pstmt.close();
-				conn.close();
-			}catch(SQLException SQLe) {
-				System.out.println(SQLe);
-				return false;
-			}
+		conn = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
+		pstmt = conn.prepareStatement(sqlQuery);
+		for(int count = 0; count < numberOfQm ; count++) {
+			pstmt.setString(count + 1, values.get(count).toString());
 		}
+		pstmt.executeUpdate();
 		return true;
-	}	
+	}
 	
 	public List <Map> getData(String sqlQuery){
 		List<Map> values = new ArrayList();
@@ -90,6 +72,7 @@ public class DatabaseAccess {
 				result.add(index);
 			}
 		}catch(SQLException SQLe) {
+			throw new RuntimeException(SQLe);
 			//고치자
 		}finally {
 			try{
@@ -97,11 +80,30 @@ public class DatabaseAccess {
 				pstmt.close();
 				conn.close();
 			}catch(SQLException SQLe) {
-				System.out.println(SQLe);
-				return null;
+				throw new RuntimeException(SQLe);
 			}
 		}
 		return result;
+	}
+	public void commit() throws SQLException{
+		conn.commit();
+		try {
+			pstmt.clearParameters();
+			pstmt.close();
+			conn.close();
+		}catch(SQLException SQLe) {
+			throw new RuntimeException(SQLe);
+		}
+	}
+	public void rollback() {
+		try {
+			conn.rollback();
+			pstmt.clearParameters();
+			pstmt.close();
+			conn.close();
+		}catch(SQLException SQLe) {
+			throw new RuntimeException(SQLe);
+		}
 	}
 	private int countQm(String clone) {
 		int numberOfQm = 0;

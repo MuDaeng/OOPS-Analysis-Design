@@ -7,19 +7,19 @@ public class TableThread implements Runnable {
 		this.tableStatus = new Table(tableNum);
 	}
 	
-	public Table occupyCustomer(Customer customer) {
-		this.tableStatus.setCustomer(customer);
-		return this.tableStatus;
-	}
-	
-	public Table getTableStatus() {
-		return this.tableStatus;
-	}
-
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		//고치자
 	}
 
+	public Table occupyCustomer(Customer customer) {
+		this.tableStatus.setCustomer(customer);
+		if(customer != null) tableStatus.setTableState(TableState.isOccupying);
+		else tableStatus.setTableState(TableState.isCleanable);
+		return this.tableStatus;
+	}
+	public Table getTableStatus() {
+		return this.tableStatus;
+	}
 }

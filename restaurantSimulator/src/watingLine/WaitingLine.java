@@ -1,6 +1,8 @@
-package restaurantSimulator;
+package watingLine;
 
 import java.util.*;
+
+import restaurantSimulator.TimeOperation;
 
 public abstract class WaitingLine<E> {
 	private List<E> waitList;
@@ -18,7 +20,11 @@ public abstract class WaitingLine<E> {
 		return this.timeOperation;
 	}
 
-	protected abstract boolean addLine(E obj);
+	protected boolean addLine(E index) {
+		return waitList.add(index);
+	}
 	
-	protected abstract boolean removeLine(E obj);
+	protected boolean removeLine(E index) {
+		return waitList.remove(index);
+	}
 }

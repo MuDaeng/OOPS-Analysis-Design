@@ -1,6 +1,8 @@
-package restaurantSimulator;
+package watingLine;
 
 import java.util.*;
+
+import restaurantSimulator.Clerk;
 
 public class ClerkWaitingLine extends WaitingLine<Clerk> {
 
@@ -17,16 +19,13 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	}
 	
 	@Override
-	protected boolean addLine(Clerk obj) {
-		// TODO Auto-generated method stub
-		return this.getWaitList().add(obj);
+	public boolean addLine(Clerk index) {
+		return super.addLine(index);
 	}
 
 	@Override
-	protected boolean removeLine(Clerk obj) {
+	public boolean removeLine(Clerk index) {
 		// TODO Auto-generated method stub
-		return this.getWaitList().remove(obj);
+		return super.removeLine(index);
 	}
-
-
 }

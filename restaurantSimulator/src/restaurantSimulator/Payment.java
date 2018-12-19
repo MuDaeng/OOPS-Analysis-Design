@@ -4,8 +4,9 @@ public class Payment {
 	private int customerNumber;
 	private TimeOperation timeOperation;
 	
-	public TableThread changeTableStatus(TableThread table,ClerkThread clerk) {
+	public synchronized TableThread changeTableStatus(TableThread table,ClerkThread clerk) {
 		//고치자
+		table.occupyCustomer(null);
 		return table;
 	}
 

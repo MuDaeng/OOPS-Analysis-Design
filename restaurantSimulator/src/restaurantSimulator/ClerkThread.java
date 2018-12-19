@@ -20,5 +20,5 @@ public class ClerkThread implements Runnable {
 	public Clerk getClerkStatus() {
 		return this.clerkStatus;
 	}
-
+	
 }

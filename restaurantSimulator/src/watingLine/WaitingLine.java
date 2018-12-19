@@ -2,7 +2,7 @@ package watingLine;
 
 import java.util.*;
 
-import restaurantSimulator.TimeOperation;
+import restaurantSimulator.*;
 
 public abstract class WaitingLine<E> {
 	private List<E> waitList;
@@ -44,5 +44,11 @@ public abstract class WaitingLine<E> {
 	protected boolean removeLine(E index) {
 		return waitList.remove(index);
 	}
-	
+	protected ResultDTO inputValue(ResultDTOValuesName name) {
+		ResultDTO tmp = new ResultDTO();
+		switch(name) {
+		case 
+		}
+		return null;
+	}
 }

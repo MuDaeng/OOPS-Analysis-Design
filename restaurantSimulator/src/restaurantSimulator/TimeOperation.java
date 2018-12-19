@@ -76,6 +76,9 @@ public class TimeOperation {
 	public void setResultDTO(ResultDTO resultDTO) {
 		this.resultDTO = resultDTO;
 	}
+	public ResultDTO getResultDTO() {
+		return this.resultDTO;
+	}
 	public List getReqWaitList() {
 		return this.reqWaitList;
 	}

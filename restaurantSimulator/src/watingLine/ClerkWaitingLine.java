@@ -1,8 +1,8 @@
 package watingLine;
 
 import java.util.*;
-
 import restaurantSimulator.Clerk;
+import restaurantSimulator.ResultDTO;
 
 public class ClerkWaitingLine extends WaitingLine<Clerk> {
 
@@ -33,6 +33,17 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	@Override
 	public void setResultMax() {
 		// TODO Auto-generated method stub
-		this.getTimeOperation().setResultDTO(resultDTO);
+		ResultDTO data = this.getTimeOperation().getResultDTO();
+		data.setClerkMaxWaitingTime(this.getMax());
+		this.getTimeOperation().setResultDTO(data);
 	}
+
+	@Override
+	public void setResultAvg() {
+		// TODO Auto-generated method stub
+		ResultDTO data = this.getTimeOperation().getResultDTO();
+		data.setClerkMaxWaitingTime(this.getAvg());
+		this.getTimeOperation().setResultDTO(data);
+	}
+	
 }

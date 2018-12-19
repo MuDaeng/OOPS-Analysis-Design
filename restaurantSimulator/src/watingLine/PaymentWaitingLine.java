@@ -1,7 +1,9 @@
 package watingLine;
 
-import restaurantSimulator.*;
 import java.util.*;
+
+import restaurantSimulator.Customer;
+import restaurantSimulator.Payment;
 
 public class PaymentWaitingLine extends WaitingLine<Customer> {
 	private Payment payment;
@@ -10,7 +12,6 @@ public class PaymentWaitingLine extends WaitingLine<Customer> {
 		super(new ArrayList<Customer>());
 		this.payment = new Payment();
 	}
-	
 	private static class Singleton{
 		private static PaymentWaitingLine instance = new PaymentWaitingLine();
 	}
@@ -31,5 +32,15 @@ public class PaymentWaitingLine extends WaitingLine<Customer> {
 	public Payment getPayment() {
 		return payment;
 	}
-	
+	@Override
+	public void setResultAvg() {
+		// TODO Auto-generated method stub
+		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setPayAvgWaitingTime(a);});
+	}
+
+	@Override
+	public void setResultMax() {
+		// TODO Auto-generated method stub
+		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setPayMaxWaitingTime(a);});
+	}
 }

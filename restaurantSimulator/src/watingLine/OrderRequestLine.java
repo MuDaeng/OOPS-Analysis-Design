@@ -31,6 +31,15 @@ public class OrderRequestLine extends WaitingLine<Table>{
 		return super.removeLine(index);
 	}
 
-	
-	
+	@Override
+	public void setResultAvg() {
+		// TODO Auto-generated method stub
+		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setReqAvgWaitingTime(a);});
+	}
+
+	@Override
+	public void setResultMax() {
+		// TODO Auto-generated method stub
+		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setReqMaxWaitingTime(a);});
+	}
 }

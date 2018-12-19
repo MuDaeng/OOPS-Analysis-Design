@@ -30,4 +30,16 @@ public class CustomerWaitingLine extends WaitingLine<Customer>{
 		this.getCountList().add(index.getCusWaitTime());
 		return super.removeLine(index);
 	}
+
+	@Override
+	public void setResultAvg() {
+		// TODO Auto-generated method stub
+		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setCusAvgWaitingTime(a);});
+	}
+
+	@Override
+	public void setResultMax() {
+		// TODO Auto-generated method stub
+		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setCusMaxWaitingTime(a);});
+	}
 }

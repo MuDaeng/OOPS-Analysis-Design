@@ -4,13 +4,34 @@ import java.util.*;
 
 import restaurantSimulator.*;
 
-public abstract class WaitingLine<E> {
+public abstract class WaitingLine<E> implements SetResult {
 	private List<E> waitList;
 	private TimeOperation timeOperation;
 	private List<Integer> countList;
 	
 	public WaitingLine(List<E> waitList) {
 		this.waitList = waitList;
+	}
+	public void setCountList(List<Integer> countList) {
+		this.countList = countList;
+	}
+	protected void setResultMax(InputResultValue setCalculateResult) {
+		setCalculateResult.setResult(this.getMax());
+	}
+	protected void setResultAvg(InputResultValue setCalculateResult) {
+		setCalculateResult.setResult(this.getAvg());
+	}
+	protected boolean addLine(E index) {
+		return waitList.add(index);
+	}
+	protected boolean removeLine(E index) {
+		return waitList.remove(index);
+	}
+	private int getMax() {
+		return timeOperation.calculateMax(countList);
+	}
+	private int getAvg() {
+		return timeOperation.calculateAvg(countList);
 	}
 	
 	public List<E> getWaitList() {
@@ -23,32 +44,5 @@ public abstract class WaitingLine<E> {
 
 	public List<Integer> getCountList() {
 		return countList;
-	}
-
-	public void setCountList(List<Integer> countList) {
-		this.countList = countList;
-	}
-	protected abstract void setResultMax();
-	protected abstract void setResultAvg();
-	protected int getMax() {
-		return timeOperation.calculateMax(countList);
-	}
-	protected int getAvg() {
-		return timeOperation.calculateAvg(countList);
-	}
-	
-	protected boolean addLine(E index) {
-		return waitList.add(index);
-	}
-	
-	protected boolean removeLine(E index) {
-		return waitList.remove(index);
-	}
-	protected ResultDTO inputValue(ResultDTOValuesName name) {
-		ResultDTO tmp = new ResultDTO();
-		switch(name) {
-		case 
-		}
-		return null;
 	}
 }

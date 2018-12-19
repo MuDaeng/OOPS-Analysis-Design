@@ -4,18 +4,14 @@ import java.util.*;
 import java.sql.SQLException;
 
 public class TimeOperation {
-	private DatabaseAccess dba;
+	private DAO dao;
 	private ResultDTO resultDTO;
-	private List reqWaitList;
-	private List payWaitList;
 	private String SQLTable;
 
 	private TimeOperation() {
-		dba = DatabaseAccess.getInstance();
-		reqWaitList = new ArrayList();
-		payWaitList = new ArrayList();
+		dao = DAO.getInstance();
+		resultDTO = new ResultDTO();
 		SQLTable = "result";
-		//고치자
 	}
 	
 	private static class Singleton{
@@ -62,36 +58,23 @@ public class TimeOperation {
 		values.add(resultDTO.getReqMaxWaitingTime());
 		values.add(resultDTO.getReqAvgWaitingTime());
 		try {
-			if(dba.setData(sqlQuery, values)) {
-				dba.commit();
+			if(dao.setData(sqlQuery, values)) {
+				dao.commit();
 				return true;
 			}
 		}catch(SQLException SQLe){
-			dba.rollback();
+			dao.rollback();
 			return false;
 		}
 		return false;
 	}
-	
+	public List<Map<String,Object>> getResult(String SQLQuery){
+		return dao.getData(SQLQuery);
+	}
 	public void setResultDTO(ResultDTO resultDTO) {
 		this.resultDTO = resultDTO;
 	}
 	public ResultDTO getResultDTO() {
 		return this.resultDTO;
-	}
-	public List getReqWaitList() {
-		return this.reqWaitList;
-	}
-
-	public void setReqWaitList(List reqWaitList) {
-		this.reqWaitList = reqWaitList;
-	}
-
-	public List getPayWaitList() {
-		return this.payWaitList;
-	}
-
-	public void setPayWaitList(List payWaitList) {
-		this.payWaitList = payWaitList;
 	}
 }

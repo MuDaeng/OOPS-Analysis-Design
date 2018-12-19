@@ -3,7 +3,7 @@ package restaurantSimulator;
 import java.util.*;
 import java.sql.*;
 
-public class DatabaseAccess {
+public class DAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private String JDBC_DRIVER = ""; // 고치자
@@ -11,7 +11,7 @@ public class DatabaseAccess {
 	private String DB_USER = ""; // 고치자
 	private String DB_PASSWORD = ""; //고치자
 	
-	private DatabaseAccess() {
+	private DAO() {
 		try {
 			Class.forName(this.JDBC_DRIVER);
 		}catch(Exception e) {
@@ -20,10 +20,10 @@ public class DatabaseAccess {
 	}
 	
 	private static class Singleton{
-		private static final DatabaseAccess instance = new DatabaseAccess();
+		private static final DAO instance = new DAO();
 	}
 	
-	public static DatabaseAccess getInstance() {
+	public static DAO getInstance() {
 		return Singleton.instance;
 	}
 	
@@ -43,13 +43,13 @@ public class DatabaseAccess {
 		return true;
 	}
 	
-	public List <Map> getData(String sqlQuery){
-		List<Map> values = new ArrayList();
+	public List <Map<String,Object>> getData(String sqlQuery){
+		List<Map<String,Object>> values = new ArrayList();
 		return getData(sqlQuery,values);
 	}
 	//catch문이 부실하다 고치자
-	public List <Map> getData(String sqlQuery, List values){
-		List<Map> result = new ArrayList<Map>();
+	public List <Map<String,Object>> getData(String sqlQuery, List values){
+		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
 		int numberOfQm = countQm(sqlQuery);
 		if(numberOfQm != values.size()) {
 			System.out.println("물음표 갯수랑 속성값 갯수가 달라");

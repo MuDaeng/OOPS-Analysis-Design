@@ -20,6 +20,7 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	
 	@Override
 	public boolean addLine(Clerk index) {
+		// TODO Auto-generated method stub
 		return super.addLine(index);
 	}
 
@@ -28,5 +29,10 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 		// TODO Auto-generated method stub
 		this.getCountList().add(index.getClerkWaitTime());
 		return super.removeLine(index);
+	}
+	@Override
+	public void setResultMax() {
+		// TODO Auto-generated method stub
+		this.getTimeOperation().setResultDTO(resultDTO);
 	}
 }

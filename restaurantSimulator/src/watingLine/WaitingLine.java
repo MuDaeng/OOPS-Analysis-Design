@@ -28,7 +28,15 @@ public abstract class WaitingLine<E> {
 	public void setCountList(List<Integer> countList) {
 		this.countList = countList;
 	}
-
+	protected abstract void setResultMax();
+	protected abstract void setResultAvg();
+	protected int getMax() {
+		return timeOperation.calculateMax(countList);
+	}
+	protected int getAvg() {
+		return timeOperation.calculateAvg(countList);
+	}
+	
 	protected boolean addLine(E index) {
 		return waitList.add(index);
 	}
@@ -36,4 +44,5 @@ public abstract class WaitingLine<E> {
 	protected boolean removeLine(E index) {
 		return waitList.remove(index);
 	}
+	
 }

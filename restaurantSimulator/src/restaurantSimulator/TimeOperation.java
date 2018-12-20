@@ -3,10 +3,13 @@ package restaurantSimulator;
 import java.util.*;
 import java.sql.SQLException;
 
+import waitingLine.*;
+
 public class TimeOperation {
 	private DAO dao;
 	private ResultDTO resultDTO;
 	private String SQLTable;
+	private WaitingLine waitingLine;
 
 	private TimeOperation() {
 		dao = DAO.getInstance();
@@ -20,29 +23,30 @@ public class TimeOperation {
 	public static TimeOperation getInstance() {
 		return Singleton.instance;
 	}
-	public int calculateAvg(List<Integer> waitList) {
+	private int calculateAvg(List<Integer> countList) {
 		//고치자
-		int countNum = waitList.size();
+		int countNum = countList.size();
 		int value = 0;
 		if(countNum == 0) {
 			System.out.println("잘못됨");
 			return 0;
 		}else {
-			Iterator<Integer> iterator = waitList.iterator();
+			Iterator<Integer> iterator = countList.iterator();
 			while(iterator.hasNext()) value += iterator.next();
 			return ( value / countNum );
 		}
 	}
-	public int calculateMax(List<Integer> waitList) {
-		if(waitList.size() == 0) {
+	private int calculateMax(List<Integer> countList) {
+		if(countList.size() == 0) {
 			return 0;
 		}else {
-			waitList.sort(null);
-			return waitList.get(waitList.size()-1);	
+			countList.sort(null);
+			return countList.get(countList.size()-1);	
 		}
 	}
-
-	public boolean inputResult() {
+	
+	
+	public boolean inputResultToDB() {
 		List<Integer> values = new ArrayList<Integer>();
 		//고치자
 		String sqlQuery = "insert into " + SQLTable + " values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -68,7 +72,8 @@ public class TimeOperation {
 		}
 		return false;
 	}
-	public List<ResultDTO> getResult(){
+	
+	public List<ResultDTO> getResults(){
 		String SQLQuery = ""; //고치자
 		Iterator<Map<String,Object>> iterator = dao.getData(SQLQuery).iterator();
 		List<ResultDTO> result = new ArrayList<ResultDTO>();
@@ -96,10 +101,30 @@ public class TimeOperation {
 		}
 		return result;
 	}
-	public void setResultDTO(ResultDTO resultDTO) {
-		this.resultDTO = resultDTO;
+	
+	public void inputResultToResultDTO() {
+		waitingLine = CustomerWaitingLine.getInstance();
+		resultDTO.setCusAvgWaitingTime(calculateAvg(getCountList()));
+		resultDTO.setCusMaxWaitingTime(calculateMax(getCountList()));
+		
+		waitingLine = ClerkWaitingLine.getInstance();
+		resultDTO.setClerkAvgWaitingTime(calculateAvg(getCountList()));
+		resultDTO.setClerkMaxWaitingTime(calculateMax(getCountList()));
+		
+		waitingLine = PaymentWaitingLine.getInstance();
+		resultDTO.setPayAvgWaitingTime(calculateAvg(getCountList()));
+		resultDTO.setPayMaxWaitingTime(calculateMax(getCountList()));
+		
+		waitingLine = OrderRequestLine.getInstance();
+		resultDTO.setReqAvgWaitingTime(calculateAvg(getCountList()));
+		resultDTO.setReqMaxWaitingTime(calculateMax(getCountList()));
 	}
 	public ResultDTO getResultDTO() {
 		return this.resultDTO;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private List<Integer> getCountList() {
+		return waitingLine.getCountList();
 	}
 }

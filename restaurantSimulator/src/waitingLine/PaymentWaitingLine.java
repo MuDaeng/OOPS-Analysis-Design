@@ -1,4 +1,4 @@
-package watingLine;
+package waitingLine;
 
 import java.util.*;
 
@@ -23,24 +23,10 @@ public class PaymentWaitingLine extends WaitingLine<Customer> {
 		// TODO Auto-generated method stub
 		return super.addLine(index);
 	}
-	@Override
 	public boolean removeLine(Customer index) {
-		// TODO Auto-generated method stub
-		this.getCountList().add(index.getPayWaitTime());
-		return super.removeLine(index);
+		return super.removeLine(index, index.getPayWaitTime());
 	}
 	public Payment getPayment() {
 		return payment;
-	}
-	@Override
-	public void setResultAvg() {
-		// TODO Auto-generated method stub
-		super.setResultAvg( value -> {this.getTimeOperation().getResultDTO().setPayAvgWaitingTime(value);});
-	}
-
-	@Override
-	public void setResultMax() {
-		// TODO Auto-generated method stub
-		super.setResultMax( value -> {this.getTimeOperation().getResultDTO().setPayMaxWaitingTime(value);});
 	}
 }

@@ -20,23 +20,18 @@ public class RestaurantTask {
 	
 	public void requestOrder() {
 		int first = 0;
-		while(true) {
-			if(clerkWaitingLine.getWaitList().size() != 0) {
-				Clerk clerk = clerkWaitingLine.getWaitList().remove(first);
-				Table table = orderRequestLine.getWaitList().remove(first);
-				clerk.setWorking(true);
-				//작업
-				progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
-				clerk.setWorking(false);
-				clerkWaitingLine.getWaitList().add(clerk);
-				break;
-			}else {
-				if(Thread.currentThread().isInterrupted()) {
-					for(int count = 0; count < clerkWaitingLine.getWaitList().size(); count++) {
-						int waitTime = orderRequestLine.getWaitList().get(count).getReqWaitTime();
-						orderRequestLine.getWaitList().get(count).setReqWaitTime(waitTime+1);
-					}
-				}
+		if(clerkWaitingLine.getWaitList().size() != 0) {
+			Clerk clerk = clerkWaitingLine.getWaitList().remove(first);
+			Table table = orderRequestLine.getWaitList().remove(first);
+			clerk.setWorking(true);
+			//작업
+			progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
+			clerk.setWorking(false);
+			clerkWaitingLine.getWaitList().add(clerk);
+		}else {
+			for(int count = 0; count < clerkWaitingLine.getWaitList().size(); count++) {
+				int waitTime = orderRequestLine.getWaitList().get(count).getReqWaitTime();
+				orderRequestLine.getWaitList().get(count).setReqWaitTime(waitTime+1);
 			}
 		}
 	}

@@ -34,13 +34,13 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	@Override
 	public void setResultAvg() {
 		// TODO Auto-generated method stub
-		super.setResultAvg(a -> {this.getTimeOperation().getResultDTO().setClerkAvgWaitingTime(a);});
+		super.setResultAvg(value -> {this.getTimeOperation().getResultDTO().setClerkAvgWaitingTime(value);});
 	}
 
 	@Override
 	public void setResultMax() {
 		// TODO Auto-generated method stub
-		super.setResultMax(a -> {this.getTimeOperation().getResultDTO().setClerkMaxWaitingTime(a);});
+		super.setResultMax(value -> {this.getTimeOperation().getResultDTO().setClerkMaxWaitingTime(value);});
 	}
 	
 

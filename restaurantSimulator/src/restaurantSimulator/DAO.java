@@ -44,7 +44,7 @@ public class DAO {
 	}
 	
 	public List <Map<String,Object>> getData(String sqlQuery){
-		List<Map<String,Object>> values = new ArrayList();
+		List<Map<String,Object>> values = new ArrayList<Map<String,Object>>();
 		return getData(sqlQuery,values);
 	}
 	//catch문이 부실하다 고치자

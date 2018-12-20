@@ -5,7 +5,7 @@ import java.util.*;
 import restaurantSimulator.Customer;
 
 public class CustomerWaitingLine extends WaitingLine<Customer>{
-
+	
 	private CustomerWaitingLine() {
 		super(new ArrayList<Customer>());
 	}
@@ -34,12 +34,12 @@ public class CustomerWaitingLine extends WaitingLine<Customer>{
 	@Override
 	public void setResultAvg() {
 		// TODO Auto-generated method stub
-		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setCusAvgWaitingTime(a);});
+		super.setResultAvg( value -> {this.getTimeOperation().getResultDTO().setCusAvgWaitingTime(value);});
 	}
 
 	@Override
 	public void setResultMax() {
 		// TODO Auto-generated method stub
-		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setCusMaxWaitingTime(a);});
+		super.setResultMax( value -> {this.getTimeOperation().getResultDTO().setCusMaxWaitingTime(value);});
 	}
 }

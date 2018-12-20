@@ -14,7 +14,7 @@ public class OrderRequestLine extends WaitingLine<Table>{
 		private static OrderRequestLine instance = new OrderRequestLine();
 	}
 	
-	public OrderRequestLine getInstance() {
+	public static OrderRequestLine getInstance() {
 		return Singleton.instance;
 	}
 
@@ -34,12 +34,12 @@ public class OrderRequestLine extends WaitingLine<Table>{
 	@Override
 	public void setResultAvg() {
 		// TODO Auto-generated method stub
-		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setReqAvgWaitingTime(a);});
+		super.setResultAvg( value -> {this.getTimeOperation().getResultDTO().setReqAvgWaitingTime(value);});
 	}
 
 	@Override
 	public void setResultMax() {
 		// TODO Auto-generated method stub
-		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setReqMaxWaitingTime(a);});
+		super.setResultMax( value -> {this.getTimeOperation().getResultDTO().setReqMaxWaitingTime(value);});
 	}
 }

@@ -11,10 +11,9 @@ public abstract class WaitingLine<E> implements SetResult {
 	
 	public WaitingLine(List<E> waitList) {
 		this.waitList = waitList;
+		this.countList = new ArrayList<Integer>();
 	}
-	public void setCountList(List<Integer> countList) {
-		this.countList = countList;
-	}
+
 	protected void setResultMax(InputResultValue setCalculateResult) {
 		setCalculateResult.setResult(this.getMax());
 	}
@@ -27,22 +26,19 @@ public abstract class WaitingLine<E> implements SetResult {
 	protected boolean removeLine(E index) {
 		return waitList.remove(index);
 	}
+	public List<E> getWaitList() {
+		return this.waitList;
+	}
+	protected TimeOperation getTimeOperation() {
+		return this.timeOperation;
+	}
+	protected List<Integer> getCountList() {
+		return countList;
+	}
 	private int getMax() {
 		return timeOperation.calculateMax(countList);
 	}
 	private int getAvg() {
 		return timeOperation.calculateAvg(countList);
-	}
-	
-	public List<E> getWaitList() {
-		return this.waitList;
-	}
-	
-	public TimeOperation getTimeOperation() {
-		return this.timeOperation;
-	}
-
-	public List<Integer> getCountList() {
-		return countList;
 	}
 }

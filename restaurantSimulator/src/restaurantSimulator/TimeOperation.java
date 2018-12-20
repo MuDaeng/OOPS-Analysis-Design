@@ -68,8 +68,33 @@ public class TimeOperation {
 		}
 		return false;
 	}
-	public List<Map<String,Object>> getResult(String SQLQuery){
-		return dao.getData(SQLQuery);
+	public List<ResultDTO> getResult(){
+		String SQLQuery = ""; //고치자
+		Iterator<Map<String,Object>> iterator = dao.getData(SQLQuery).iterator();
+		List<ResultDTO> result = new ArrayList<ResultDTO>();
+		while(iterator.hasNext()) {
+			Map<String,Object> index = iterator.next();
+			ResultDTO tmp = new ResultDTO();
+			
+			tmp.setCompressionDegree(Integer.valueOf(index.get("compressionDegree").toString()));
+			tmp.setCustomerNumber(Integer.valueOf(index.get("customerNumber").toString()));
+			tmp.setClerkNumber(Integer.valueOf(index.get("clerkNumber").toString()));
+			
+			tmp.setCusMaxWaitingTime(Integer.valueOf(index.get("cusMaxWaitingTime").toString()));
+			tmp.setCusAvgWaitingTime(Integer.valueOf(index.get("cusAvgWaitingTime").toString()));
+			
+			tmp.setClerkMaxWaitingTime(Integer.valueOf(index.get("clerkMaxWaitingTime").toString()));
+			tmp.setClerkAvgWaitingTime(Integer.valueOf(index.get("clerkAvgWaitingTime").toString()));
+			
+			tmp.setPayMaxWaitingTime(Integer.valueOf(index.get("payMaxWaitingTime").toString()));
+			tmp.setPayAvgWaitingTime(Integer.valueOf(index.get("payAvgWaitingTime").toString()));
+			
+			tmp.setReqMaxWaitingTime(Integer.valueOf(index.get("reqMaxWaitingTime").toString()));
+			tmp.setReqAvgWaitingTime(Integer.valueOf(index.get("reqAvgWaitingTime").toString()));
+			
+			result.add(tmp);
+		}
+		return result;
 	}
 	public void setResultDTO(ResultDTO resultDTO) {
 		this.resultDTO = resultDTO;

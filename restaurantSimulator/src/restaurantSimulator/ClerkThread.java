@@ -15,6 +15,9 @@ public class ClerkThread implements Runnable {
 
 	public Clerk handleTask() {
 		//고치자
+		if(this.clerkStatus.isWorking()) {
+			
+		}
 		return this.clerkStatus;
 	}
 	public Clerk getClerkStatus() {

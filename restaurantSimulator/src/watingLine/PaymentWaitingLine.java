@@ -35,12 +35,12 @@ public class PaymentWaitingLine extends WaitingLine<Customer> {
 	@Override
 	public void setResultAvg() {
 		// TODO Auto-generated method stub
-		super.setResultAvg( a -> {this.getTimeOperation().getResultDTO().setPayAvgWaitingTime(a);});
+		super.setResultAvg( value -> {this.getTimeOperation().getResultDTO().setPayAvgWaitingTime(value);});
 	}
 
 	@Override
 	public void setResultMax() {
 		// TODO Auto-generated method stub
-		super.setResultMax( a -> {this.getTimeOperation().getResultDTO().setPayMaxWaitingTime(a);});
+		super.setResultMax( value -> {this.getTimeOperation().getResultDTO().setPayMaxWaitingTime(value);});
 	}
 }

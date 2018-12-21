@@ -14,10 +14,10 @@ public abstract class WaitingLine<E> {
 		this.countList = new ArrayList<Integer>();
 	}
 
-	protected boolean addLine(E index) {
+	protected synchronized boolean addLine(E index) {
 		return waitList.add(index);
 	}
-	protected boolean removeLine(E index,int waitTime) {
+	protected synchronized boolean removeLine(E index,int waitTime) {
 		countList.add(waitTime);
 		return waitList.remove(index);
 	}

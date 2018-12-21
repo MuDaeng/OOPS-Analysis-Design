@@ -60,7 +60,17 @@ public class Progress {
 	public TableThread getTable(int tableNumber) {
 		return tables[tableNumber-1];
 	}
-
-
 	
+	public ClerkWaitingLine getClerkWaitingLine() {
+		return clerkWaitingLine;
+	}
+	public CustomerWaitingLine getCustomerWaitingLine() {
+		return customerWaitingLine;
+	}
+	public OrderRequestLine getOrderRequestLine() {
+		return orderRequestLine;
+	}
+	public PaymentWaitingLine getPaymentWaitingLine() {
+		return paymentWaitingLine;
+	}	
 }

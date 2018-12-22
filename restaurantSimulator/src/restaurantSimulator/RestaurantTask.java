@@ -5,33 +5,36 @@ import waitingLine.*;
 
 public class RestaurantTask {
 	private Progress progress;
+	private WaitingLines waitingLines;
 	
 	public RestaurantTask() {
 		progress = Progress.getInstance();
+		waitingLines = new WaitingLines();
 	}
 	
 	public void requestOrder() {
-			Clerk clerk = (Clerk) WaitingLineEnum.CLERKWAITINGLINE.pop();
-			Table table = (Table) WaitingLineEnum.ORDERREQUESTLINE.pop();
-			clerk.setWorking(true);
-			//작업
-			progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
-			clerk.setWorking(false);
-			WaitingLineEnum.CLERKWAITINGLINE.addLine(clerk);
+		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
+		Table table = waitingLines.getOrderRequestLine().pop();
+		clerk.setWorking(true);
+		progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
+		clerk.setWorking(false);
+		waitingLines.getClerkWaitingLine().addLine(clerk);	
 	}
 	public synchronized void countReqWaitTime() {
-		for(int count = 0; count < WaitingLineEnum.CLERKWAITINGLINE.waitListSize(); count++) {
-			int waitTime = WaitingLineEnum.ORDERREQUESTLINE.getWaitTime();
-			WaitingLineEnum.ORDERREQUESTLINE.setWaitTime(waitTime+1);
+		WaitingLineEnum requestLine = WaitingLineEnum.ORDERREQUESTLINE;
+		for(int count = 0; count < waitingLines.getClerkWaitingLine().getListSize(); count++) {
+			int waitTime = waitingLines.getWaitTime(requestLine);
+			waitTime++;
+			waitingLines.setWaitTime(requestLine, count, waitTime);
 		}
 	}
 	public void customerCreate() {
 		Customer customer = new Customer(0,0);
-		WaitingLineEnum.CUSTOMERWAITINGLINE.addLine(customer);
+		waitingLines.getCustomerWaitingLine().addLine(customer);
 	}
 	public void customerwaittime(int waitcustomer) {
 		int customerwait;
-		Customer customer = (Customer) WaitingLineEnum.CUSTOMERWAITINGLINE.get(waitcustomer);
+		Customer customer = waitingLines.getCustomerWaitingLine().get(waitcustomer);
 		customerwait=customer.getCusWaitTime();
 		customerwait++;
 		customer.setCusWaitTime(customerwait);
@@ -39,11 +42,11 @@ public class RestaurantTask {
 		   
 	public void paymentLine(Table table) {
 		Customer customer = table.getCustomer();
-		WaitingLineEnum.PAYMENTWAITINGLINE.addLine(customer);
+		waitingLines.getPaymentWaitingLine().addLine(customer);
 	}
 	public void paymentwaittime(int waitcustomer) {
 		int paywait;
-		Customer customer = (Customer) WaitingLineEnum.CUSTOMERWAITINGLINE.get(waitcustomer);
+		Customer customer = waitingLines.getCustomerWaitingLine().get(waitcustomer);
 		paywait=customer.getPayWaitTime();
 		paywait++;
 		customer.setPayWaitTime(paywait);

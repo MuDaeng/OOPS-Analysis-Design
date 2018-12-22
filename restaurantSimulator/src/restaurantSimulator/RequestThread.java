@@ -6,9 +6,11 @@ import waitingLine.WaitingLineEnum;
 
 public class RequestThread implements Runnable{
 	private RestaurantTask task;
+	private WaitingLines waitingLines;
 	
 	public RequestThread() {
 		task = new RestaurantTask();
+		waitingLines = new WaitingLines();
 	}
 	@Override
 	public void run() {
@@ -22,7 +24,7 @@ public class RequestThread implements Runnable{
 		}, 1000, 1000 );
 		while(true) {
 			synchronized(this) {
-				if(WaitingLineEnum.CLERKWAITINGLINE.waitListSize() > 0) {
+				if(waitingLines.getClerkWaitingLine().getListSize() > 0) {
 					task.requestOrder();
 					timer.cancel();
 					break;

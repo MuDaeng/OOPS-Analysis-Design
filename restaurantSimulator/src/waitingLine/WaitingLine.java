@@ -21,6 +21,16 @@ public abstract class WaitingLine<E> {
 		countList.add(waitTime);
 		return waitList.remove(index);
 	}
+	public synchronized E get(int index) {
+		return waitList.get(index);
+	}
+	public synchronized E pop(){
+		int first = 0;
+		return waitList.remove(first);
+	}
+	public int getListSize() {
+		return waitList.size();
+	}
 	public List<E> getWaitList() {
 		return this.waitList;
 	}
@@ -30,5 +40,4 @@ public abstract class WaitingLine<E> {
 	public List<Integer> getCountList() {
 		return countList;
 	}
-
 }

@@ -10,6 +10,7 @@ public class Progress {
 	private CustomerWaitingLine customerWaitingLine;
 	private OrderRequestLine orderRequestLine;
 	private PaymentWaitingLine paymentWaitingLine;
+	private Thread pollingThread;
 	
 	private static class Singleton {
 		private static Progress instance = new Progress();
@@ -20,6 +21,7 @@ public class Progress {
 		customerWaitingLine = CustomerWaitingLine.getInstance();
 		orderRequestLine = OrderRequestLine.getInstance();
 		paymentWaitingLine = PaymentWaitingLine.getInstance();
+		pollingThread = new Thread(new PollingThread());
 	}
 	public static Progress getInstance() {
 		return Singleton.instance;
@@ -47,6 +49,10 @@ public class Progress {
 			Thread makeClerk = new Thread(clerks[count++]);
 			makeClerk.start();
 		}
+	}
+	
+	public void progressStart() {
+		pollingThread.start();
 	}
 	
 	public ClerkThread[] getClerks() {

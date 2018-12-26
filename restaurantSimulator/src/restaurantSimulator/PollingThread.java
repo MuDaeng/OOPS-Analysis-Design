@@ -10,7 +10,7 @@ public class PollingThread implements Runnable {
 		paymentThread = new Thread(new PaymentThread());
 		waitingLines = new WaitingLines();
 	}
-	
+	//0.1초마다 직원대기줄에서 직원이 놀고 있으면 직원에게 일을 시킴 우선순위는 위에서부터
 	public void run() {
 		while(true) {
 			if(waitingLines.getClerkWaitingLine().getListSize() > 0) {

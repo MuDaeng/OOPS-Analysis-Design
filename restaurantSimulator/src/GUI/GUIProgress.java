@@ -6,12 +6,15 @@ import javax.swing.JPanel;
 import restaurantSimulator.Option;
 import restaurantSimulator.Progress;
 import restaurantSimulator.RestaurantTask;
+import restaurantSimulator.TableState;
 import restaurantSimulator.WaitingLines;
 
 public class GUIProgress  {   
 	private WaitingLines waitingLines;
-   //나중에 패널 이용해서 바꾸겠음
-   //일단 꾸미는 것 보단 구현 우선
+	private Progress progress;
+	
+	//나중에 패널 이용해서 바꾸겠음
+	//일단 꾸미는 것 보단 구현 우선
    
 	String cuswaitline, paywaitline, ordreqline, clerkwaitline, cleantable, payhandleclerk, reqhandleclerk, compressiondegree;
 	String[] tableArray = new String[Option.tableNumber];
@@ -34,7 +37,8 @@ public class GUIProgress  {
 		this.frame.setContentPane(simulationMainScreen);
 		waitingLines = new WaitingLines();
 		//clerkwaitline = String.valueOf();
-		Progress.getInstance().init();
+		progress = Progress.getInstance();
+		progress.init();
 		
 		compressiondegree = String.valueOf(Option.customerPressure);
 		init();
@@ -48,7 +52,7 @@ public class GUIProgress  {
 					//12-24 9시
 					for(int i=0;i<Option.tableNumber;i++) {
 						if(waitingLines.getCustomerWaitingLine().getListSize()>1)
-							customertotable(i);
+							cusToTable(i);
 					}	
 					try {
 						Thread.sleep(1000);
@@ -56,7 +60,7 @@ public class GUIProgress  {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}   
+				}  
 			}
 		}.start();
 	}
@@ -67,21 +71,24 @@ public class GUIProgress  {
 	}	
 	//12-24 9시
 	//이거는 커스터머 투 테이블이 아니라 커스토머의 주문을 OrderLine에 집어 넣는거임
-	public void customertotable(int i) {
+	public void cusToTable(int i) {
 		RestaurantTask task = new RestaurantTask();
 		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
-		if(tableArray[i]=="isEmpty") {
+		if(tableArray[i]==TableState.isEmpty.toString()) {
+			task.customertotable(Progress.getInstance().getTable(i+1).getTableStatus());
 			task.addOrderLine(Progress.getInstance().getTable(i+1).getTableStatus());
-			tableArray[i]="isOccupying";
-		}	
+			
+			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
+			tableArray[i]=TableState.isOccupying.toString();
+		}   
 	}
 	//12-24 9시
 	public void init() {
 		for(int i=0;i<Option.tableNumber;i++)
-			tableArray[i] = "isEmpty";
+			tableArray[i] = TableState.isEmpty.toString();
 	}	
    
-	public void settext() {
+	private void settext() {
 		clerkwaitline = String.valueOf(Progress.getInstance().getClerkWaitingLine().getListSize());
 		cusWaitLine.setText("손님 대기 줄 :" + cuswaitline);
 		payWaitLine.setText("결제 대기 줄 :" + paywaitline);
@@ -93,7 +100,7 @@ public class GUIProgress  {
 		compressionDegree.setText("압박 정도 :" + compressiondegree);
 		
 		for(int i=0; i<Option.tableNumber;i++) {
-			table[i].setText("테이블"+i+":"+ tableArray[i]);
+			table[i].setText("테이블"+(i+1)+":"+ tableArray[i]);
 		}
 	}
 	//직원관련

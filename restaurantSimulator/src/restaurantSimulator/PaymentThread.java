@@ -12,6 +12,7 @@ public class PaymentThread implements Runnable{
 		task = new RestaurantTask();
 	}
 	
+	//
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

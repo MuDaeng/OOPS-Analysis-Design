@@ -10,6 +10,8 @@ public class RequestThread implements Runnable{
 	public RequestThread() {
 		task = new RestaurantTask();
 	}
+	
+	//타이머가 1초에 한번씩 requestTime을 올려주며, 직원이 일을 처리하면 타이머가 멈춘다.
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -29,7 +31,7 @@ public class RequestThread implements Runnable{
 				}
 			}
 			try {
-				Thread.sleep(50);	
+				Thread.sleep(50);	//0.05초에 한번씩 직원라인이 비는지 검사한다.
 			}catch(InterruptedException ie) {}
 		}
 	}

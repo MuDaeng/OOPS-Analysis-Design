@@ -45,7 +45,6 @@ public class TimeOperation {
 		}
 	}
 	
-	
 	public boolean inputResultToDB() {
 		List<Integer> values = new ArrayList<Integer>();
 		//고치자
@@ -102,8 +101,14 @@ public class TimeOperation {
 		return result;
 	}
 	
+	public void inputOptionToResultDTO(int compressionDegree, int clerkNumber) {
+		resultDTO.setCompressionDegree(compressionDegree);
+		resultDTO.setClerkNumber(clerkNumber);
+	}
+	
 	public void inputResultToResultDTO() {
 		waitingLine = CustomerWaitingLine.getInstance();
+		resultDTO.setCustomerNumber(getCountList().size());
 		resultDTO.setCusAvgWaitingTime(calculateAvg(getCountList()));
 		resultDTO.setCusMaxWaitingTime(calculateMax(getCountList()));
 		

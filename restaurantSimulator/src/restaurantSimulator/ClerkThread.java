@@ -5,8 +5,8 @@ import waitingLine.ClerkWaitingLine;
 public class ClerkThread implements Runnable {
 	private Clerk clerkStatus;
 	
-	public ClerkThread(int ability, int experienced) {
-	   this.clerkStatus = new Clerk(ability,experienced);
+	public ClerkThread(int ability, int experienced,int clerkNum) {
+	   this.clerkStatus = new Clerk(ability,experienced, clerkNum);
 	}
 	
 	@Override
@@ -35,16 +35,6 @@ public class ClerkThread implements Runnable {
 			}
 		}
 	}
-	public Clerk handleTask() {
-		//고치자
-		if(this.clerkStatus.isWorking()) {	
-			try {
-				long takeWorkTime = 3000;
-				Thread.sleep(takeWorkTime/(clerkStatus.getAbility()+clerkStatus.getExperienced()));			
-			}catch(InterruptedException ie) {}
-		}		
-		return this.clerkStatus;
-	}	
 	public Clerk getClerkStatus() {
 		return this.clerkStatus;
 	}

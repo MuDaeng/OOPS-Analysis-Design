@@ -11,8 +11,11 @@ public class RestaurantTask {
 		progress = Progress.getInstance();
 		waitingLines = new WaitingLines();
 	}
-	public void addOrderLine(Table table) {
+	public void customertotable(Table table) {
 		Customer customer = waitingLines.getCustomerWaitingLine().pop();
+		progress.getTable(table.getTableNum()).occupyCustomer(customer);
+	}
+	public void addOrderLine(Table table) {
 		waitingLines.getOrderRequestLine().addLine(table);
 	}
 	public void resolveOrder() {
@@ -20,6 +23,7 @@ public class RestaurantTask {
 		Table table = waitingLines.getOrderRequestLine().pop();
 		clerk.setWorking(true);
 		//작업
+		clerk.handleTask();
 		progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
 		clerk.setWorking(false);
 		waitingLines.getClerkWaitingLine().addLine(clerk);	
@@ -42,6 +46,7 @@ public class RestaurantTask {
 		Table table = waitingLines.getPaymentWaitingLine().pop();
 		clerk.setWorking(true);
 		//작업
+		clerk.handleTask();
 		clerk.setWorking(false);
 		progress.getTable(table.getTableNum()).occupyCustomer(null);
 		waitingLines.getClerkWaitingLine().addLine(clerk);

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import restaurantSimulator.Option;
+import restaurantSimulator.TimeOperation;
 
 public class GUIOption {
 	GUIMain frame;
@@ -23,11 +24,12 @@ public class GUIOption {
 	JTextField tablenumberText = new JTextField("");
 	
 	JButton toMain = new JButton("값 입력");
+	TimeOperation timeOperation;
 	
 	public GUIOption(GUIMain frame) {
 		this.frame = frame;
 		this.frame.setContentPane(optionScreen);
-		
+		this.timeOperation = TimeOperation.getInstance();
 		toMain.addActionListener(new setOption());
 		
 		optionview();
@@ -71,7 +73,7 @@ public class GUIOption {
 			Option.customerPressure = customerPressureI;
 			Option.clerkNumber = clerkNumberI;
 			Option.tableNumber = tableNumberI;
-			
+			timeOperation.inputOptionToResultDTO(Option.customerPressure, Option.clerkNumber);
 			frame.dispose();
 			new GUIMain();		
 		}	      

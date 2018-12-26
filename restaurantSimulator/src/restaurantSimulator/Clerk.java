@@ -1,14 +1,16 @@
 package restaurantSimulator;
 
 public class Clerk {
+	private int clerkNum;
 	private int ability;
 	private int experienced;
 	private int clerkWaitTime;
 	private boolean isWorking;
 	
-	public Clerk(int ability, int experienced) {
+	public Clerk(int ability, int experienced,int clerkNum) {
 		this.ability = ability;
 		this.experienced = experienced;
+		this.clerkNum = clerkNum;
 		this.clerkWaitTime = 0;
 		this.isWorking = false;
 	}
@@ -38,5 +40,14 @@ public class Clerk {
 		this.isWorking = isWorking;
 	}
 	
-	
+	//직원이 일을 처리할 때 3초가 걸리고 능력이 좋을 수록 더 빨라짐
+	public Clerk handleTask() {
+		if(this.isWorking) {	
+			try {
+				long takeWorkTime = 3000;
+				Thread.sleep(takeWorkTime/(this.ability+this.experienced));			
+			}catch(InterruptedException ie) {}
+		}		
+		return this;
+	}	
 }

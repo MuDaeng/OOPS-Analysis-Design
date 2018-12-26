@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import restaurantSimulator.ResultDTO;
 import restaurantSimulator.TimeOperation;
+import restaurantSimulator.WaitingLines;
 
 public class ResultWindow {
    
@@ -30,12 +31,14 @@ public class ResultWindow {
 	
 	private TimeOperation timeOperation;
 	private ResultDTO result;
+	private WaitingLines wl;
 	
 	public ResultWindow(GUIMain frame) {
 		
 		this.frame = frame;
 		this.frame.setContentPane(resultwindow);
 		
+		wl = new WaitingLines();
 		toMain.addActionListener(new returnMain());
 		timeOperation = TimeOperation.getInstance();
 		timeOperation.inputResultToResultDTO();

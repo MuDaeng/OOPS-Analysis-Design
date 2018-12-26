@@ -18,13 +18,13 @@ public class ClerkThread implements Runnable {
 		ClerkWaitingLine.getInstance().addLine(clerkStatus);
 		while(true) {
 			
-			if(this.clerkStatus.isWorking()==true) {
-				System.out.println("직원이 일을 하고 있는중");
-				waittime=0;
-			}	
-			else {
+			if(clerkStatus.getClerkState() == ClerkState.notWorking) {
 				System.out.println("직원이 할일이 없습니다.");
 				waittime++;
+			}	
+			else {
+				System.out.println("직원이 일을 하고 있는중");
+				waittime=0;
 			}
 			try {
 				clerkStatus.setClerkWaitTime(waittime);

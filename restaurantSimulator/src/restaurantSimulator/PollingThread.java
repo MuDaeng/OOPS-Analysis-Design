@@ -16,7 +16,7 @@ public class PollingThread implements Runnable {
 			try {
 				if(waitingLines.getClerkWaitingLine().getListSize() > 0) {
 					requestThread.start();
-					paymentThread.start();
+//					paymentThread.start();
 				}
 				Thread.sleep(100);
 			} catch (InterruptedException ie) {

@@ -39,7 +39,8 @@ public class Progress {
 		tables = (TableThread[]) tmp.toArray(tables);
 		tmp.clear();
 		for(int count = 0; count < Option.clerkNumber; count++) {
-			tmp.add(new ClerkThread(1,1,count+1));
+			ClerkThread index = new ClerkThread(1,1,count+1);
+			tmp.add(index);
 		}
 		clerks = new ClerkThread[tmp.size()];
 		clerks = (ClerkThread[]) tmp.toArray(clerks);

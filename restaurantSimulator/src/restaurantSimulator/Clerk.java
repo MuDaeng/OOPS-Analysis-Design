@@ -5,16 +5,22 @@ public class Clerk {
 	private int ability;
 	private int experienced;
 	private int clerkWaitTime;
-	private boolean isWorking;
+	private ClerkState clerkState;
 	
 	public Clerk(int ability, int experienced,int clerkNum) {
 		this.ability = ability;
 		this.experienced = experienced;
 		this.clerkNum = clerkNum;
 		this.clerkWaitTime = 0;
-		this.isWorking = false;
+		this.clerkState = ClerkState.notWorking;
 	}
-	
+	public int getClerkNum() {
+		return clerkNum;
+	}
+
+	public void setClerkNum(int clerkNum) {
+		this.clerkNum = clerkNum;
+	}
 	public int getAbility() {
 		return this.ability;
 	}
@@ -33,19 +39,18 @@ public class Clerk {
 	public void setClerkWaitTime(int clerkWaitTime) {
 		this.clerkWaitTime = clerkWaitTime;
 	}
-	public boolean isWorking() {
-		return this.isWorking;
+	public ClerkState getClerkState() {
+		return clerkState;
 	}
-	public void setWorking(boolean isWorking) {
-		this.isWorking = isWorking;
+	public void setClerkState(ClerkState clerkState) {
+		this.clerkState = clerkState;
 	}
-	
 	//직원이 일을 처리할 때 3초가 걸리고 능력이 좋을 수록 더 빨라짐
 	public Clerk handleTask() {
-		if(this.isWorking) {	
+		if(this.clerkState == ClerkState.notWorking) {	
 			try {
 				long takeWorkTime = 3000;
-				Thread.sleep(takeWorkTime/(this.ability+this.experienced));			
+				Thread.currentThread().sleep(takeWorkTime/(this.ability+this.experienced));			
 			}catch(InterruptedException ie) {}
 		}		
 		return this;

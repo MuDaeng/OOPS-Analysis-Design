@@ -4,12 +4,9 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-import restaurantSimulator.Option;
-import restaurantSimulator.Progress;
-import restaurantSimulator.RestaurantTask;
-import restaurantSimulator.TableState;
-import restaurantSimulator.WaitingLines;
+import restaurantSimulator.*;
 
 public class GUIProgress  {   
 	private WaitingLines waitingLines;
@@ -35,6 +32,12 @@ public class GUIProgress  {
 	JLabel compressionDegree = new JLabel();
 	JButton viewResultBtn = new JButton("마감");
 	ActionListener viewResult = e -> {
+		int size = waitingLines.getCustomerWaitingLine().getListSize();
+		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();
+		List<Customer> cusWaitList = waitingLines.getCustomerWaitingLine().getWaitList();
+		for(int count = 0; count < size; count++) {
+			cusCountList.add(cusWaitList.get(count).getCusWaitTime());
+		}
 		new ResultWindow(frame);
 		progress.end();
 		frame.setVisible(false);
@@ -60,7 +63,7 @@ public class GUIProgress  {
 					settext();
 					//12-24 9시
 					for(int i=0;i<Option.tableNumber;i++) {
-						if(waitingLines.getCustomerWaitingLine().getListSize()>1)
+						if(waitingLines.getCustomerWaitingLine().getListSize()>0)
 							cusToTable(i);
 					}	
 					try {
@@ -72,6 +75,7 @@ public class GUIProgress  {
 				}  
 			}
 		}.start();
+		progress.progressStart();
 	}
 	public void callcustomer() {
 		RestaurantTask task = new RestaurantTask();
@@ -79,22 +83,22 @@ public class GUIProgress  {
 		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
 	}	
 	//12-24 9시
-	//이거는 커스터머 투 테이블이 아니라 커스토머의 주문을 OrderLine에 집어 넣는거임
 	public void cusToTable(int i) {
 		RestaurantTask task = new RestaurantTask();
+		Table tmp = progress.getTable(i+1).getTableStatus();
 		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
-		if(tableArray[i]==TableState.isEmpty.toString()) {
-			task.customertotable(progress.getTable(i+1).getTableStatus());
-			task.addOrderLine(progress.getTable(i+1).getTableStatus());
-			
+		if(tableArray[i].equals(TableState.isEmpty.toString())) {
+			task.customertotable(tmp);
+			tableArray[i]=tmp.getTableState().toString();
+			task.addOrderLine(tmp);
 			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
-			tableArray[i]=TableState.isOccupying.toString();
+			
 		}   
 	}
 	//12-24 9시
 	public void init() {
-		for(int i=0;i<Option.tableNumber;i++)
-			tableArray[i] = TableState.isEmpty.toString();
+		for(int i=0;i<progress.getTables().length;i++)
+			tableArray[i] = progress.getTable(i+1).getTableStatus().getTableState().toString();
 
 		viewResultBtn.addActionListener(viewResult);
 	}	

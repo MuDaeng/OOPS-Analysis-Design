@@ -3,6 +3,7 @@ package restaurantSimulator;
 import java.util.*;
 
 import waitingLine.ClerkWaitingLine;
+import waitingLine.OrderRequestLine;
 
 public class RequestThread implements Runnable{
 	private RestaurantTask task;
@@ -18,13 +19,13 @@ public class RequestThread implements Runnable{
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
-			public synchronized void run() {
+			public void run() {
 				task.countReqWaitTime();
 			}
 		}, 1000, 1000 );
 		while(true) {
 			synchronized(this) {
-				if(ClerkWaitingLine.getInstance().getListSize() > 0) {
+				if((ClerkWaitingLine.getInstance().getListSize() > 0) && (OrderRequestLine.getInstance().getListSize() > 0)) {
 					task.resolveOrder();
 					timer.cancel();
 					break;

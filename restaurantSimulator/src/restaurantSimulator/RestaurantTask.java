@@ -21,11 +21,11 @@ public class RestaurantTask {
 	public void resolveOrder() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		Table table = waitingLines.getOrderRequestLine().pop();
-		clerk.setWorking(true);
+		clerk.setClerkState(ClerkState.takeOrder);
 		//작업
 		clerk.handleTask();
-		progress.getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
-		clerk.setWorking(false);
+		Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
+		clerk.setClerkState(ClerkState.notWorking);
 		waitingLines.getClerkWaitingLine().addLine(clerk);	
 	}
 	public synchronized void countReqWaitTime() {
@@ -44,10 +44,10 @@ public class RestaurantTask {
 	public void payment() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		Table table = waitingLines.getPaymentWaitingLine().pop();
-		clerk.setWorking(true);
+		clerk.setClerkState(ClerkState.takePayment);;
 		//작업
 		clerk.handleTask();
-		clerk.setWorking(false);
+		clerk.setClerkState(ClerkState.notWorking);
 		progress.getTable(table.getTableNum()).occupyCustomer(null);
 		waitingLines.getClerkWaitingLine().addLine(clerk);
 	}

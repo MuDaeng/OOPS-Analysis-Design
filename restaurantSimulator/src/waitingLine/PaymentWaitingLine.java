@@ -2,14 +2,14 @@ package waitingLine;
 
 import java.util.*;
 
-import restaurantSimulator.Customer;
+import restaurantSimulator.Table;
 import restaurantSimulator.Payment;
 
-public class PaymentWaitingLine extends WaitingLine<Customer> {
+public class PaymentWaitingLine extends WaitingLine<Table> {
 	private Payment payment;
 	
 	private PaymentWaitingLine () {
-		super(new ArrayList<Customer>());
+		super(new ArrayList<Table>());
 		this.payment = new Payment();
 	}
 	private static class Singleton{
@@ -19,12 +19,12 @@ public class PaymentWaitingLine extends WaitingLine<Customer> {
 		return Singleton.instance;
 	}
 	@Override
-	public boolean addLine(Customer index) {
+	public boolean addLine(Table index) {
 		// TODO Auto-generated method stub
 		return super.addLine(index);
 	}
-	public boolean removeLine(Customer index) {
-		return super.removeLine(index, index.getPayWaitTime());
+	public boolean removeLine(Table index) {
+		return super.removeLine(index, index.getCustomer().getPayWaitTime());
 	}
 	public Payment getPayment() {
 		return payment;

@@ -1,10 +1,8 @@
 package GUI;
 
-import java.util.*;
-import restaurantSimulator.*;
 
 public class Main {
-	public static void main(String[] args) {
-		GUIMain mainGUI = new GUIMain();
-	}
+   public static void main(String[] args) {
+      new GUIMain("식당시뮬레이션");
+   }
 }

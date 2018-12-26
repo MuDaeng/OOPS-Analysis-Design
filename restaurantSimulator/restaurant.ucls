@@ -1,124 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="restaurantSimulator.GetWaitingLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/GetWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="131" x="281" y="6"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="waitingLine.WaitingLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/WaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="190" x="403" y="554"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="3" language="java" name="waitingLine.WaitingLineEnum" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/WaitingLineEnum.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="233" x="974" y="6"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="4" language="java" name="restaurantSimulator.ClerkThread" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/ClerkThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="131" x="1254" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="restaurantSimulator.RestaurantTask" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/RestaurantTask.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="153" x="858" y="325"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="restaurantSimulator.Customer" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="145" x="931" y="1385"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="restaurantSimulator.DAO" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="245" x="616" y="1668"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="restaurantSimulator.DAO.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/DAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="91" x="616" y="1385"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="restaurantSimulator.PollingThread" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/PollingThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="137" x="1247" y="6"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="waitingLine.ClerkWaitingLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/ClerkWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="172" x="1425" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="restaurantSimulator.Clerk" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Clerk.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="150" x="1254" y="1048"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="restaurantSimulator.TimeOperation" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/TimeOperation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="173" x="403" y="1385"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="restaurantSimulator.TableThread" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/TableThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="190" x="1024" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="restaurantSimulator.Option" project="restaurantSimulator" 
+  <class id="1" language="java" name="restaurantSimulator.Option" project="restaurantSimulator" 
     file="/restaurantSimulator/src/restaurantSimulator/Option.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="261" width="173" x="1424" y="6"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,433 +10,617 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="waitingLine.OrderRequestLine.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/OrderRequestLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="443" y="1048"/>    
+  <package id="2" language="java" name="waitingLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="101" x="381" y="34"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="3" language="java" name="waitingLine.WaitingLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/WaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="947" y="622"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="waitingLine.CustomerWaitingLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/CustomerWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="194" x="167" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="17" language="java" name="waitingLine.CustomerWaitingLine.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/CustomerWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="167" y="554"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="restaurantSimulator.Progress" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Progress.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="254" x="893" y="554"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="19" language="java" name="waitingLine.ClerkWaitingLine.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/ClerkWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="1425" y="554"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="20" language="java" name="waitingLine.PaymentWaitingLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/PaymentWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="189" x="664" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="21" language="java" name="restaurantSimulator.TableState" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/TableState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="142" x="1116" y="1385"/>    
+  <enumeration id="4" language="java" name="waitingLine.WaitingLineEnum" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/WaitingLineEnum.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="233" x="556" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="22" language="java" name="restaurantSimulator.Payment" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Payment.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="277" x="570" y="1048"/>    
+  <class id="5" language="java" name="restaurantSimulator.ClerkThread" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/ClerkThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="131" x="764" y="793"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="restaurantSimulator.Table" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Table.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="172" x="1024" y="1048"/>    
+  <class id="6" language="java" name="restaurantSimulator.RestaurantTask" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/RestaurantTask.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="153" x="1278" y="263"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="restaurantSimulator.ResultDTO" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/ResultDTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="675" width="184" x="179" y="1668"/>    
+  <class id="7" language="java" name="restaurantSimulator.Customer" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="145" x="944" y="1323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="restaurantSimulator.TimeOperation.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/TimeOperation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="91" x="403" y="1668"/>    
+  <class id="8" language="java" name="restaurantSimulator.DAO" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="245" x="703" y="1606"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="restaurantSimulator.Progress.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/Progress.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="91" x="893" y="855"/>    
+  <class id="9" language="java" name="restaurantSimulator.DAO.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/DAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="91" x="703" y="1323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="waitingLine.PaymentWaitingLine.Singleton" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/PaymentWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="887" y="1048"/>    
+  <class id="10" language="java" name="restaurantSimulator.PollingThread" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/PollingThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="137" x="1492" y="263"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="restaurantSimulator.RequestThread" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/restaurantSimulator/RequestThread.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="111" x="823" y="6"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="29" language="java" name="waitingLine.OrderRequestLine" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/waitingLine/OrderRequestLine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="181" x="443" y="855"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="30" language="java" name="GUI.ResultWindow" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/GUI/ResultWindow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="306" y="240"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="31" language="java" name="GUI.GUIMain" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/GUI/GUIMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="442" y="240"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="32" language="java" name="GUI.GUIProgress" project="restaurantSimulator" 
-    file="/restaurantSimulator/src/GUI/GUIProgress.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="589" y="240"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="33" language="java" name="GUI.Main" project="restaurantSimulator" 
+  <class id="11" language="java" name="GUI.Main" project="restaurantSimulator" 
     file="/restaurantSimulator/src/GUI/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="748" y="249"/>    
+    <position height="99" width="113" x="864" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="34">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="35" name="clerkStatus"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="38" name="tableState"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="41" name="dao"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="43">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="44" name="task"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <bendpoint x="412" y="1048"/>    
-    <bendpoint x="412" y="855"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="47" name="waitingLine"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="49">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <nesting id="50">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="19"/>  
-  </nesting>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="52">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="53" name="customer"/>      
-      <multiplicity id="54" minimum="0" maximum="1"/>    
+  <class id="12" language="java" name="waitingLine.ClerkWaitingLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/ClerkWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="172" x="1746" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="13" language="java" name="restaurantSimulator" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="139" x="1053" y="34"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="14" language="java" name="restaurantSimulator.Clerk" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Clerk.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="150" x="530" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="restaurantSimulator.TimeOperation" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/TimeOperation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="173" x="490" y="1323"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="GUI.ResultWindow" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/GUI/ResultWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="106" x="1269" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="restaurantSimulator.TableThread" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/TableThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="190" x="935" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="waitingLine.OrderRequestLine.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/OrderRequestLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="1525" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="GUI.GUIMain" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/GUI/GUIMain.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="1717" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="waitingLine.CustomerWaitingLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/CustomerWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="194" x="530" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="waitingLine.CustomerWaitingLine.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/CustomerWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="530" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="restaurantSimulator.Progress" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Progress.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="254" x="1158" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="waitingLine.ClerkWaitingLine.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/ClerkWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="1746" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="waitingLine.PaymentWaitingLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/PaymentWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="189" x="1165" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="25" language="java" name="restaurantSimulator.TableState" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/TableState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="142" x="1129" y="1323"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="26" language="java" name="restaurantSimulator.Payment" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Payment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="277" x="720" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="restaurantSimulator.Table" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Table.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="172" x="1037" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="restaurantSimulator.WaitingLines" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/WaitingLines.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="254" x="1452" y="492"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="restaurantSimulator.ResultDTO" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/ResultDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="675" width="184" x="348" y="1606"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="restaurantSimulator.TimeOperation.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/TimeOperation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="91" x="572" y="1606"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="restaurantSimulator.Progress.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/Progress.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="91" x="1394" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="waitingLine.PaymentWaitingLine.Singleton" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/PaymentWaitingLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="87" x="1249" y="986"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="GUI.GUIProgress" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/GUI/GUIProgress.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="126" x="1112" y="263"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="restaurantSimulator.RequestThread" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/restaurantSimulator/RequestThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="111" x="1452" y="34"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="waitingLine.OrderRequestLine" project="restaurantSimulator" 
+    file="/restaurantSimulator/src/waitingLine/OrderRequestLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="181" x="1525" y="793"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="36">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="37" name="task"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="56" name="instance"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="58">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="59" name="instance"/>      
-      <multiplicity id="60" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="61">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="62" name="instance"/>      
-      <multiplicity id="63" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="64">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="65" name="paymentWaitingLine"/>      
-      <multiplicity id="66" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="67">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </nesting>  
-  <nesting id="68">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
-  <association id="69">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="70" name="tables"/>      
-      <multiplicity id="71" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="73" name="customerWaitingLine"/>      
-      <multiplicity id="74" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="76" name="progress"/>      
-      <multiplicity id="77" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="78">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="79" name="instance"/>      
-      <multiplicity id="80" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="81">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="15"/>  
-  </nesting>  
-  <association id="82">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="83" name="instance"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="85">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="27"/>  
-  </nesting>  
-  <association id="86">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="87" name="tableStatus"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="89">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="90" name="orderRequestLine"/>      
-      <multiplicity id="91" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="92">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="93" name="progress"/>      
-      <multiplicity id="94" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="95">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="26"/>  
-  </nesting>  
-  <association id="96">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="97" name="clerks"/>      
-      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="99">    
-    <bendpoint x="391" y="855"/>    
-    <bendpoint x="391" y="1048"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="100" name="timeOperation"/>      
-      <multiplicity id="101" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="102">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="25"/>  
-  </nesting>  
-  <association id="103">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="104" name="resultDTO"/>      
-      <multiplicity id="105" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="106">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="107" name="timeOperation"/>      
-      <multiplicity id="108" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="109">    
+  <association id="39">    
+    <bendpoint x="499" y="986"/>    
+    <bendpoint x="499" y="793"/>    
     <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="110" name="instance"/>      
-      <multiplicity id="111" minimum="0" maximum="1"/>    
+      <attribute id="40" name="waitingLine"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="112">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="113" name="clerkWaitingLine"/>      
-      <multiplicity id="114" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="115">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="116" name="payment"/>      
-      <multiplicity id="117" minimum="0" maximum="1"/>    
+  <nesting id="42">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <association id="43">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="44" name="instance"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="118">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="119">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="120" name="instance"/>      
-      <multiplicity id="121" minimum="0" maximum="1"/>    
+  <nesting id="46">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <association id="47">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="48" name="instance"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="122">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="2"/>  
+  <nesting id="50">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <association id="51">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="52" name="orderRequestLine"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="55" name="waitingLines"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
+  <association id="58">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="59" name="instance"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="62" name="customerWaitingLine"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="65" name="instance"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="68" name="instance"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="71" name="paymentWaitingLine"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="73">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <generalization id="74">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="75">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="76" name="resultDTO"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="79" name="tables"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="82" name="progress"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="85" name="customer"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="88" name="orderRequestLine"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="91" name="clerkWaitingLine"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <bendpoint x="1461" y="263"/>    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="94" name="waitingLines"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="97" name="tableStatus"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="100" name="progress"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="103" name="timeOperation"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="105">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="106" name="dao"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="109" name="instance"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="112" name="clerkWaitingLine"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="115" name="instance"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="118" name="clerkStatus"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <nesting id="121">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="31"/>  
+  </nesting>  
+  <generalization id="122">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="123">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="124" name="waitingLines"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="127" name="tableState"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="130" name="paymentWaitingLine"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <bendpoint x="478" y="793"/>    
+    <bendpoint x="478" y="986"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="133" name="timeOperation"/>      
+      <multiplicity id="134" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="135">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <nesting id="136">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <association id="137">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="138" name="payment"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="141" name="clerks"/>      
+      <multiplicity id="142" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="144" name="customerWaitingLine"/>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

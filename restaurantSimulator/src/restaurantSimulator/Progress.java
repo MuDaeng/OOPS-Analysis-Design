@@ -24,17 +24,19 @@ public class Progress {
 	public static Progress getInstance() {
 		return Singleton.instance;
 	}
-	public void init(Option option) {
+	public void init() {
 		List tmp = new ArrayList();
-		for(int count = 0; count < option.getTableNumber(); count++) {
+		for(int count = 0; count < Option.tableNumber; count++) {
 			tmp.add(new TableThread(count + 1));
 		}
-		tables = (TableThread[]) tmp.toArray();
+		tables = new TableThread[tmp.size()];
+		tables = (TableThread[]) tmp.toArray(tables);
 		tmp.clear();
-		for(int count = 0; count < option.getClerkNumber(); count++) {
+		for(int count = 0; count < Option.tableNumber; count++) {
 			tmp.add(new ClerkThread(1,1));
 		}
-		clerks = (ClerkThread[]) tmp.toArray();
+		clerks = new ClerkThread[tmp.size()];
+		clerks = (ClerkThread[]) tmp.toArray(clerks);
 		int count = 0;
 		while(count < tables.length) {
 			Thread makeTable = new Thread(tables[count++]);

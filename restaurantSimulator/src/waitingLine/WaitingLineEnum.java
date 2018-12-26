@@ -13,7 +13,7 @@ public enum WaitingLineEnum {
 		case ORDERREQUESTLINE :
 			return OrderRequestLine.getInstance().getWaitList().get(first).getReqWaitTime();
 		case PAYMENTWAITINGLINE :
-			return PaymentWaitingLine.getInstance().getWaitList().get(first).getPayWaitTime();
+			return PaymentWaitingLine.getInstance().getWaitList().get(first).getCustomer().getPayWaitTime();
 		default :
 			return 0;
 		}
@@ -30,7 +30,7 @@ public enum WaitingLineEnum {
 			OrderRequestLine.getInstance().getWaitList().get(index).setReqWaitTime(waitTime);
 			break;
 		case PAYMENTWAITINGLINE :
-			PaymentWaitingLine.getInstance().getWaitList().get(index).setPayWaitTime(waitTime);
+			PaymentWaitingLine.getInstance().getWaitList().get(index).getCustomer().setPayWaitTime(waitTime);
 			break;
 		default :
 			return;

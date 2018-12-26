@@ -12,7 +12,13 @@ public class TableThread implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		//고치자
-		while(true);
+		while(true) {
+			try {
+				Thread.sleep(50);	
+			}catch(InterruptedException ie) {
+				
+			}
+		}
 	}
 
 	public Table occupyCustomer(Customer customer) {

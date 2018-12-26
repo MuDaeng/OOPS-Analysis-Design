@@ -1,15 +1,17 @@
 package restaurantSimulator;
 
-import java.util.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import waitingLine.ClerkWaitingLine;
 
-public class RequestThread implements Runnable{
+public class PaymentThread implements Runnable{
 	private RestaurantTask task;
 	
-	public RequestThread() {
+	public PaymentThread() {
 		task = new RestaurantTask();
 	}
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -17,13 +19,13 @@ public class RequestThread implements Runnable{
 		timer.schedule(new TimerTask() {
 			@Override
 			public synchronized void run() {
-				task.countReqWaitTime();
+				task.countPayWaitTime();
 			}
 		}, 1000, 1000 );
 		while(true) {
 			synchronized(this) {
 				if(ClerkWaitingLine.getInstance().getListSize() > 0) {
-					task.resolveOrder();
+					task.payment();
 					timer.cancel();
 					break;
 				}
@@ -33,4 +35,5 @@ public class RequestThread implements Runnable{
 			}catch(InterruptedException ie) {}
 		}
 	}
+	
 }

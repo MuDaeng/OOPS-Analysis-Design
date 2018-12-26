@@ -32,7 +32,9 @@ public class RequestThread implements Runnable{
 			}
 			try {
 				Thread.sleep(50);	//0.05초에 한번씩 직원라인이 비는지 검사한다.
-			}catch(InterruptedException ie) {}
+			}catch(InterruptedException ie) {
+				break;
+			}
 		}
 	}
 }

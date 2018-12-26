@@ -33,7 +33,9 @@ public class PaymentThread implements Runnable{
 			}
 			try {
 				Thread.sleep(50);	
-			}catch(InterruptedException ie) {}
+			}catch(InterruptedException ie) {
+				break;
+			}
 		}
 	}
 	

@@ -11,6 +11,8 @@ public class Progress {
 	private OrderRequestLine orderRequestLine;
 	private PaymentWaitingLine paymentWaitingLine;
 	private Thread pollingThread;
+	private List<Thread> tableList;
+	private List<Thread> clerkList;
 	
 	private static class Singleton {
 		private static Progress instance = new Progress();
@@ -27,6 +29,8 @@ public class Progress {
 		return Singleton.instance;
 	}
 	public void init() {
+		tableList = new ArrayList<Thread>();
+		clerkList = new ArrayList<Thread>();
 		List tmp = new ArrayList();
 		for(int count = 0; count < Option.tableNumber; count++) {
 			tmp.add(new TableThread(count + 1));
@@ -43,11 +47,13 @@ public class Progress {
 		while(count < tables.length) {
 			Thread makeTable = new Thread(tables[count++]);
 			makeTable.start();
+			tableList.add(makeTable);
 		}
 		count = 0;
 		while(count < clerks.length) {
 			Thread makeClerk = new Thread(clerks[count++]);
 			makeClerk.start();
+			clerkList.add(makeClerk);
 		}
 	}
 	
@@ -62,6 +68,15 @@ public class Progress {
 		return tables;
 	}
 	
+	public void end() {
+		pollingThread.interrupt();
+		for(int count = 0; count < tableList.size(); count++) {
+			tableList.get(count).interrupt();
+		}
+		for(int count = 0; count < clerkList.size(); count++) {
+			clerkList.get(count).interrupt();
+		}
+	}
 	public ClerkThread getClerk(int clerkNumber) {
 		return clerks[clerkNumber-1];
 	}

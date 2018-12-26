@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import restaurantSimulator.Option;
+import restaurantSimulator.TimeOperation;
 
 public class GUIMain extends JFrame {
 	
@@ -76,6 +77,7 @@ public class GUIMain extends JFrame {
 		frameContentPane.add(startPanel);
 		
 		//각 버튼 사이즈 및 위치 지정
+
 		startBtn.setBounds(160, 25, 80, 35);
 		optionBtn.setBounds(160, 85, 80, 35);
 		resultBtn.setBounds(160, 145, 80, 35);
@@ -88,6 +90,7 @@ public class GUIMain extends JFrame {
 	class startProgress implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			TimeOperation.getInstance().inputOptionToResultDTO(Option.customerPressure, Option.clerkNumber);
 			new GUIProgress(GUIMain.this);      
 			setVisible(false);
 			setVisible(true);

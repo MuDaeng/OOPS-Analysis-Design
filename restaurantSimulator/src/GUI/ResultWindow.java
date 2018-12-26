@@ -6,7 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GUI.GUIMain;
+import restaurantSimulator.ResultDTO;
+import restaurantSimulator.TimeOperation;
 
 public class ResultWindow {
    
@@ -27,8 +28,8 @@ public class ResultWindow {
 	
 	JButton toMain = new JButton("메인으로");
 	
-	String compressiondegree, customernumber, clerknumber, cusmaxwaitingtime, cusavgwaitingtime, clerkmaxwaitingtime, clerkavgwaitingtime, paymaxwaitingtime, payavgwaitingtime,
-	reqmaxwaitingtime, reqavgwaitingtime;
+	private TimeOperation timeOperation;
+	private ResultDTO result;
 	
 	public ResultWindow(GUIMain frame) {
 		
@@ -36,22 +37,24 @@ public class ResultWindow {
 		this.frame.setContentPane(resultwindow);
 		
 		toMain.addActionListener(new returnMain());
-		
+		timeOperation = TimeOperation.getInstance();
+		timeOperation.inputResultToResultDTO();
+		result = timeOperation.getResultDTO();
 		resultview();      
 	}	
 	
-	public void resultview() {  
-		compressionDegree.setText("손님 압박 정도 : " + compressiondegree);
-		customerNumber.setText("손님 수 : " + customernumber);
-		clerkNumber.setText("직원 수 : " + clerknumber);
-		cusMaxWaitingTime.setText("최대 손님 대기 시간 : " + cusmaxwaitingtime);
-		cusAvgWaitingTime.setText("평균 손님 대기 시간 : " + cusavgwaitingtime);
-		clerkMaxWaitingTime.setText("최대 직원 대기 시간 : " + clerkmaxwaitingtime);
-		clerkAvgWaitingTime.setText("평균 직원 대기 시간 : " + clerkavgwaitingtime);
-		payMaxWaitingTime.setText("최대 결제 대기 시간 : " + paymaxwaitingtime);
-		payAvgWaitingTime.setText("평균 결제 대기 시간 : " + payavgwaitingtime);
-		reqMaxWaitingTime.setText("최대 요청 대기 시간 : " + reqmaxwaitingtime);
-		reqAvgWaitingTime.setText("평균 요청 대기 시간 : " + reqavgwaitingtime);
+	public void resultview() {
+		compressionDegree.setText("손님 압박 정도 : " + result.getCompressionDegree());
+		customerNumber.setText("손님 수 : " + result.getCustomerNumber());
+		clerkNumber.setText("직원 수 : " + result.getClerkNumber());
+		cusMaxWaitingTime.setText("최대 손님 대기 시간 : " + result.getCusMaxWaitingTime());
+		cusAvgWaitingTime.setText("평균 손님 대기 시간 : " + result.getCusAvgWaitingTime());
+		clerkMaxWaitingTime.setText("최대 직원 대기 시간 : " + result.getClerkMaxWaitingTime());
+		clerkAvgWaitingTime.setText("평균 직원 대기 시간 : " + result.getClerkAvgWaitingTime());
+		payMaxWaitingTime.setText("최대 결제 대기 시간 : " + result.getPayMaxWaitingTime());
+		payAvgWaitingTime.setText("평균 결제 대기 시간 : " + result.getPayAvgWaitingTime());
+		reqMaxWaitingTime.setText("최대 요청 대기 시간 : " + result.getReqMaxWaitingTime());
+		reqAvgWaitingTime.setText("평균 요청 대기 시간 : " + result.getReqAvgWaitingTime());
 		
 		compressionDegree.setBounds(500, 100, 300, 100);
 		customerNumber.setBounds(500, 135, 300, 100);

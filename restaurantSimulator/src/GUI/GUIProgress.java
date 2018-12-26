@@ -1,7 +1,9 @@
 package GUI;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import restaurantSimulator.Option;
 import restaurantSimulator.Progress;
@@ -31,6 +33,13 @@ public class GUIProgress  {
 	JLabel reqHandleClerk = new JLabel();
 	JLabel[] table = new JLabel[Option.tableNumber];
 	JLabel compressionDegree = new JLabel();
+	JButton viewResultBtn = new JButton("마감");
+	ActionListener viewResult = e -> {
+		new ResultWindow(frame);
+		progress.end();
+		frame.setVisible(false);
+		frame.setVisible(true);
+	};
 	
 	public GUIProgress  (GUIMain frame) {
 		this.frame = frame;
@@ -75,8 +84,8 @@ public class GUIProgress  {
 		RestaurantTask task = new RestaurantTask();
 		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
 		if(tableArray[i]==TableState.isEmpty.toString()) {
-			task.customertotable(Progress.getInstance().getTable(i+1).getTableStatus());
-			task.addOrderLine(Progress.getInstance().getTable(i+1).getTableStatus());
+			task.customertotable(progress.getTable(i+1).getTableStatus());
+			task.addOrderLine(progress.getTable(i+1).getTableStatus());
 			
 			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
 			tableArray[i]=TableState.isOccupying.toString();
@@ -86,10 +95,12 @@ public class GUIProgress  {
 	public void init() {
 		for(int i=0;i<Option.tableNumber;i++)
 			tableArray[i] = TableState.isEmpty.toString();
+
+		viewResultBtn.addActionListener(viewResult);
 	}	
    
 	private void settext() {
-		clerkwaitline = String.valueOf(Progress.getInstance().getClerkWaitingLine().getListSize());
+		clerkwaitline = String.valueOf(progress.getClerkWaitingLine().getListSize());
 		cusWaitLine.setText("손님 대기 줄 :" + cuswaitline);
 		payWaitLine.setText("결제 대기 줄 :" + paywaitline);
 		ordReqLine.setText("요청 대기 줄 :" + ordreqline);
@@ -123,6 +134,7 @@ public class GUIProgress  {
 		cleanTable.setBounds(1100, 300, 200, 100);
 		payHandleClerk.setBounds(1100, 500, 200, 100);
 		reqHandleClerk.setBounds(800, 500, 200, 100);
+		viewResultBtn.setBounds(1200,600, 80, 80);	
 		
 		//이것좀 해결방법좀 알려주소
 		for(int i=0;i<Option.tableNumber;i++)
@@ -143,6 +155,7 @@ public class GUIProgress  {
 		simulationMainScreen.add(cleanTable);
 		simulationMainScreen.add(payHandleClerk);
 		simulationMainScreen.add(reqHandleClerk);
+		simulationMainScreen.add(viewResultBtn);
 		
 		for(int i=0;i<Option.tableNumber;i++) {
 			simulationMainScreen.add(table[i]);

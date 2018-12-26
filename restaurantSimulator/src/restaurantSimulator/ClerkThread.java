@@ -24,14 +24,15 @@ public class ClerkThread implements Runnable {
 			}	
 			else {
 				System.out.println("직원이 할일이 없습니다.");
-				waittime++;       
+				waittime++;
 			}
 			try {
 				clerkStatus.setClerkWaitTime(waittime);
 				Thread.sleep(1000);
 			}
-			catch(Exception e){
-				System.out.println(e.getMessage());
+			catch(InterruptedException ie){
+				System.out.println(ie.getMessage());
+				break;
 			}
 		}
 	}

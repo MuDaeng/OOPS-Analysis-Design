@@ -50,7 +50,7 @@ public class Clerk {
 		if(this.clerkState == ClerkState.notWorking) {	
 			try {
 				long takeWorkTime = 3000;
-				Thread.currentThread().sleep(takeWorkTime/(this.ability+this.experienced));			
+				Thread.sleep(takeWorkTime/(this.ability+this.experienced));			
 			}catch(InterruptedException ie) {}
 		}		
 		return this;

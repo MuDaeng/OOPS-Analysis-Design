@@ -51,7 +51,7 @@ public class Clerk {
 			try {
 				long takeWorkTime = 3000;
 				synchronized(Progress.getInstance().getClerk(clerkNum)) {
-					Progress.getInstance().getClerk(clerkNum).wait((takeWorkTime/(ability+experienced)));	
+					Progress.getInstance().getClerk(clerkNum).wait(takeWorkTime/(ability+experienced));
 				}
 			}catch(InterruptedException ie) {}
 		}		

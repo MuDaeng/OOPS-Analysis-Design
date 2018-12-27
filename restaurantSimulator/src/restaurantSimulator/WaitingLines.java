@@ -30,8 +30,8 @@ public class WaitingLines {
 	public PaymentWaitingLine getPaymentWaitingLine() {
 		return paymentWaitingLine;
 	}
-	public int getWaitTime(WaitingLineEnum enumValue) {
-		return enumValue.getWaitTime();
+	public int getWaitTime(WaitingLineEnum enumValue, int count) {
+		return enumValue.getWaitTime(count);
 	}
 	public void setWaitTime(WaitingLineEnum enumValue, int index, int count) {
 		enumValue.setWaitTime(index, count);

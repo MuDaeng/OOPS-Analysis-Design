@@ -28,15 +28,15 @@ public class PaymentThread implements Runnable{
 			while(true) {
 				synchronized(this) {
 					if((ClerkWaitingLine.getInstance().getListSize()) > 0 && (PaymentWaitingLine.getInstance().getListSize() > 0)) {
-						new Thread(() -> {
-							new RestaurantTask().payment();
-							timer.cancel();}).start();
+						task.payment();
+						timer.cancel();
 						break;
 					}
 				}
 				try {
-					Thread.sleep(500);	
+					Thread.sleep(501);	
 				}catch(InterruptedException ie) {
+					timer.cancel();
 					return;
 				}
 			}

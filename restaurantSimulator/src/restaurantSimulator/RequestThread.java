@@ -27,15 +27,14 @@ public class RequestThread implements Runnable{
 			while(true) {
 				synchronized(this) {
 					if((ClerkWaitingLine.getInstance().getListSize() > 0) && (OrderRequestLine.getInstance().getListSize() > 0)) {
-						new Thread(() -> {
-							new RestaurantTask().resolveOrder();
-							timer.cancel();
-						} );
+						task.resolveOrder();
+						timer.cancel();
 						break;
 					}
 					try {
-						Thread.sleep(600);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
+						Thread.sleep(502);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
 					}catch(InterruptedException ie) {
+						timer.cancel();
 						return;
 					}
 				}

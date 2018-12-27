@@ -13,6 +13,8 @@ public class Progress {
 	private Thread requestThread;
 	private Thread paymentThread;
 	private Thread cleanThread;
+	private Thread cusCreateThread;
+	private Thread addPayLineThread;
 	private List<Thread> tableList;
 	private List<Thread> clerkList;
 	
@@ -28,6 +30,28 @@ public class Progress {
 		requestThread = new Thread(new RequestThread());
 		paymentThread = new Thread(new PaymentThread());
 		cleanThread = new Thread(new CleanThread());
+		cusCreateThread = new Thread(() ->{
+			while(true) {
+				synchronized(this) {
+					callCustomer();
+					if(customerWaitingLine.getListSize() > 0) {
+						for(int count = 0; count < tables.length; count++) {
+							if(tables[count].getTableStatus().getTableState() == TableState.isEmpty) {
+								cusToTable(count);
+								break;	
+							}else continue;
+						}
+					}
+				}	
+				try {
+					Thread.sleep(503);
+				}catch(InterruptedException e){
+					break;
+				}
+			}
+		});
+		addPayLineThread = new Thread(new ToPay());
+		 
 	}
 	public static Progress getInstance() {
 		return Singleton.instance;
@@ -66,9 +90,13 @@ public class Progress {
 		requestThread.setDaemon(true);
 		paymentThread.setDaemon(true);
 		cleanThread.setDaemon(true);
+		cusCreateThread.setDaemon(true);
+		addPayLineThread.setDaemon(true);
 		requestThread.start();
 		paymentThread.start();
 		cleanThread.start();
+		cusCreateThread.start();
+		addPayLineThread.start();
 	}
 	
 	public ClerkThread[] getClerks() {
@@ -77,30 +105,24 @@ public class Progress {
 	public TableThread[] getTables() {
 		return tables;
 	}
-	public void callcustomer(int customerPressure) {
+	private void callCustomer() {
 		RestaurantTask task = new RestaurantTask();
 		int cusCreate = (int)(Math.random()*25+1);
 		if(cusCreate<Option.customerPressure*5)
 			task.customerCreate();
-//		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
 	}   
 	//12-24 9시
-	public void cusToTable(int i) {
+	private void cusToTable(int i) {
+		Table tmp = tables[i].getTableStatus();
 		RestaurantTask task = new RestaurantTask();
-//		Table tmp = progress.getTable(i+1).getTableStatus();
-		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
-//		if(tableArray[i].equals(TableState.isEmpty.toString())) {
-//			task.customertotable(tmp);
-//			tableArray[i]=tmp.getTableState().toString();
-//			task.addOrderLine(tmp);
-			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
-			
-//		}   
+		task.customertotable(tmp);
 	}
 	public void end() {
 		requestThread.interrupt();
 		paymentThread.interrupt();
 		cleanThread.interrupt();
+		cusCreateThread.interrupt();
+		addPayLineThread.interrupt();
 		for(int count = 0; count < tableList.size(); count++) {
 			tableList.get(count).interrupt();
 		}
@@ -127,4 +149,27 @@ public class Progress {
 	public PaymentWaitingLine getPaymentWaitingLine() {
 		return paymentWaitingLine;
 	}	
+private class ToPay implements Runnable{
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(true) {
+			try {
+				Thread.sleep(504);	
+			}catch(InterruptedException ie) {
+				break;
+			}
+			if((int)Math.random()*5 < 4) {
+				for(int count = 0; count < tables.length; count++) {
+					if(tables[count].getTableStatus().getTableState() == TableState.isCompleted) {
+						new RestaurantTask().addPayLine(tables[count].getTableStatus());
+					}
+				}
+			}
+
+		}
+	}
+	
+}
 }

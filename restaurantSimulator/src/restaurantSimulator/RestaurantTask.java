@@ -8,14 +8,15 @@ public class RestaurantTask {
 	private WaitingLines waitingLines;
 	
 	public RestaurantTask() {
-		progress = Progress.getInstance();
 		waitingLines = new WaitingLines();
+		progress = Progress.getInstance();
 	}
 	public void customertotable(Table table) {
 		Customer customer = waitingLines.getCustomerWaitingLine().pop();
 		progress.getTable(table.getTableNum()).occupyCustomer(customer);
+		addOrderLine(progress.getTable(table.getTableNum()).getTableStatus());
 	}
-	public void addOrderLine(Table table) {
+	private void addOrderLine(Table table) {
 		waitingLines.getOrderRequestLine().addLine(table);
 	}
 	public void addPayLine(Table table) {
@@ -28,20 +29,24 @@ public class RestaurantTask {
 		//작업
 		clerk.handleTask();
 		Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
+		Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setTableState(TableState.isCompleted);
 		clerk.setClerkState(ClerkState.notWorking);
 		waitingLines.getClerkWaitingLine().addLine(clerk);	
 	}
 	public synchronized void countReqWaitTime() {
 		WaitingLineEnum requestLine = WaitingLineEnum.ORDERREQUESTLINE;
 		for(int count = 0; count < waitingLines.getOrderRequestLine().getListSize(); count++) {
-			int waitTime = waitingLines.getWaitTime(requestLine);
+			int waitTime = waitingLines.getWaitTime(requestLine , count);
 			waitTime++;
 			waitingLines.setWaitTime(requestLine, count, waitTime);
 		}
 	}
 	public synchronized void countPayWaitTime() {
+		WaitingLineEnum paymentLine = WaitingLineEnum.PAYMENTWAITINGLINE;
 		for(int count = 0; count < waitingLines.getPaymentWaitingLine().getListSize(); count++) {
-			paymentwaittime(count);
+			int waitTime = waitingLines.getWaitTime(paymentLine, count);
+			waitTime++;
+			waitingLines.setWaitTime(paymentLine, count, waitTime);
 		}
 	}
 	public void payment() {
@@ -51,7 +56,7 @@ public class RestaurantTask {
 		//작업
 		clerk.handleTask();
 		clerk.setClerkState(ClerkState.notWorking);
-		progress.getTable(table.getTableNum()).occupyCustomer(null);
+		Progress.getInstance().getTable(table.getTableNum()).occupyCustomer(null);
 		waitingLines.getClerkWaitingLine().addLine(clerk);
 	}
 	public void cleanTable(int tableNum) {
@@ -67,7 +72,7 @@ public class RestaurantTask {
 		Customer customer = new Customer(0,0);
 		waitingLines.getCustomerWaitingLine().addLine(customer);
 	}
-	public void customerwaittime(int waitcustomer) {
+	public void customerWaitTime(int waitcustomer) {
 		int customerwait;
 		Customer customer = waitingLines.getCustomerWaitingLine().get(waitcustomer);
 		customerwait=customer.getCusWaitTime();
@@ -76,12 +81,5 @@ public class RestaurantTask {
 	}
 	public void addPaymentLine(Table table) {
 		waitingLines.getPaymentWaitingLine().addLine(table);
-	}
-	private void paymentwaittime(int waitcustomer) {
-		int paywait;
-		Customer customer = waitingLines.getPaymentWaitingLine().get(waitcustomer).getCustomer();
-		paywait=customer.getPayWaitTime();
-		paywait++;
-		customer.setPayWaitTime(paywait);
 	}
 }

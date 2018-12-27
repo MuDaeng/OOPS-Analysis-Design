@@ -33,6 +33,7 @@ public class GUIProgress  {
 	JLabel[] table = new JLabel[Option.tableNumber];
 	JLabel compressionDegree = new JLabel();
 	JButton viewResultBtn = new JButton("마감");
+	Thread callProgress;
 	ActionListener viewResult = actionPerformed -> {
 		int size = waitingLines.getCustomerWaitingLine().getListSize();
 		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();
@@ -48,6 +49,7 @@ public class GUIProgress  {
 		}
 		new ResultWindow(frame);
 		progress.end();
+		callProgress.interrupt();
 		frame.setVisible(false);
 		frame.setVisible(true);
 	};
@@ -55,8 +57,23 @@ public class GUIProgress  {
 	public GUIProgress  (GUIMain frame) {
 		this.frame = frame;
 		this.frame.setContentPane(simulationMainScreen);
+		callProgress = new Thread(() -> {
+			while(true) {
+				callcustomer();
+				catchWorking();
+				settext();
+				for(int count = 0; count < progress.getTables().length; count++) {
+					 tableArray[count]= progress.getTable(count+1).getTableStatus().getTableState().toString();		
+				}
+				try {
+					Thread.sleep(500);
+				}catch(InterruptedException e) {
+					// TODO Auto-generated catch block
+					break;
+				}
+			}
+		});
 		waitingLines = new WaitingLines();
-		//clerkwaitline = String.valueOf();
 		progress = Progress.getInstance();
 		progress.init();
 		
@@ -64,45 +81,13 @@ public class GUIProgress  {
 		
 		init();
 		view();
-		new Thread(){
-			@Override
-			public void run(){
-				while(true) {
-					callcustomer();
-					catchWorking();
-					//12-24 9시
-					for(int i=0;i<Option.tableNumber;i++) {
-						if(waitingLines.getCustomerWaitingLine().getListSize()>0)
-							cusToTable(i);
-					}	
-					settext();
-					try {
-						Thread.sleep(500);
-					}catch(InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}  
-			}
-		}.start();
 		progress.progressStart();
+		callProgress.start();
 	}
-	public void callcustomer() {
+	private void callcustomer() {
 		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
-	}   
-	//12-24 9시
-	public void cusToTable(int i) {
-		RestaurantTask task = new RestaurantTask();
-		Table tmp = progress.getTable(i+1).getTableStatus();
-		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
-		if(tableArray[i].equals(TableState.isEmpty.toString())) {
-			task.customertotable(tmp);
-			tableArray[i]=tmp.getTableState().toString();
-			task.addOrderLine(tmp);
-			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
-			
-		}   
 	}
+	//12-24 9시
 	private void catchWorking() {
 		int size = progress.getClerks().length;
 		for(int count = 0; count < size; count++) {
@@ -149,17 +134,6 @@ public class GUIProgress  {
 			table[i].setText("테이블"+(i+1)+":"+ tableArray[i]);
 		}
 	}
-	//직원관련
-//	public void clerkwait(){
-//		clerkwaitline = String.valueOf()
-//	}
-   
-//	public void clerkcreate() {
-//		for(int i=0;i<Option.clerkNumber;i++) {
-//			Runnable clerk = new ClerkThread(0,0); // 스레드에 시킬일이 포함된 runnable구현 클래스
-//			Thread clerkthread = new Thread(clerk);
-//		}
-//	}
 	public void view() {  
 		compressionDegree.setBounds(800, 20, 200, 100);
 		cusWaitLine.setBounds(30, 50, 200, 100);
@@ -194,9 +168,6 @@ public class GUIProgress  {
 		
 		for(int i=0;i<Option.tableNumber;i++) {
 			simulationMainScreen.add(table[i]);
-		}	
-      
-//      for(int i = 0; i<10 ; i++)
-//      simulationMainScreen.add(table[i]);      
+		}	    	
 	}
 }

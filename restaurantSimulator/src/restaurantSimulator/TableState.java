@@ -1,7 +1,7 @@
 package restaurantSimulator;
 
 public enum TableState {
-	isEmpty,isOccupying,isCleanable,isComplete;
+	isEmpty,isOccupying,isCleanable,isCompleted;
 	@Override
 	public String toString() {
 		switch(this) {
@@ -11,8 +11,8 @@ public enum TableState {
 				return "isOccupying";
 			case isCleanable :
 				return "isCleanable";
-			case isComplete : 
-				return "isComplete";
+			case isCompleted : 
+				return "isCompleted";
 			default :
 				return null;
 		}

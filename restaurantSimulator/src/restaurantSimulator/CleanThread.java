@@ -1,12 +1,12 @@
 package restaurantSimulator;
 
+import java.util.Timer;
+
 import waitingLine.ClerkWaitingLine;
 
 public class CleanThread implements Runnable {
-	private Progress progress;
 	private int tableNum;
 	public CleanThread() {
-		progress = Progress.getInstance();
 	}
 	
 	@Override
@@ -14,9 +14,9 @@ public class CleanThread implements Runnable {
 
 		while(true){
 			boolean flag = false;
-			int size = progress.getTables().length;
+			int size = Progress.getInstance().getTables().length;
 			for(int count = 0; count < size; count++) {
-				if(progress.getTable(count+1).getTableStatus().getTableState() == TableState.isCleanable) {
+				if(Progress.getInstance().getTable(count+1).getTableStatus().getTableState() == TableState.isCleanable) {
 					flag = true;
 					tableNum = count+1;
 					break;
@@ -28,7 +28,7 @@ public class CleanThread implements Runnable {
 				}).start(); 
 			}
 			try {
-				Thread.sleep(400);
+				Thread.sleep(499);
 			} catch (InterruptedException ie) {
 				break;
 			}

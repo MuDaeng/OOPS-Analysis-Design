@@ -27,7 +27,6 @@ public class ResultWindow {
 	JLabel reqMaxWaitingTime = new JLabel();
 	JLabel reqAvgWaitingTime = new JLabel();
 	
-	JButton toMain = new JButton("메인으로");
 	
 	private TimeOperation timeOperation;
 	private ResultDTO result;
@@ -37,7 +36,6 @@ public class ResultWindow {
 		this.frame = frame;
 		this.frame.setContentPane(resultwindow);
 		
-		toMain.addActionListener(new returnMain());
 		timeOperation = TimeOperation.getInstance();
 		timeOperation.inputResultToResultDTO();
 		result = timeOperation.getResultDTO();
@@ -69,9 +67,7 @@ public class ResultWindow {
 		reqMaxWaitingTime.setBounds(500, 415, 300, 100);
 		reqAvgWaitingTime.setBounds(500, 450, 300, 100);
 		
-		
-		toMain.setBounds(500, 510, 130, 100);
-		
+
 		
 		resultwindow.add(compressionDegree);
 		resultwindow.add(customerNumber);
@@ -84,8 +80,7 @@ public class ResultWindow {
 		resultwindow.add(payAvgWaitingTime);
 		resultwindow.add(reqMaxWaitingTime);
 		resultwindow.add(reqAvgWaitingTime);
-		
-		resultwindow.add(toMain);
+
 		
 	}	
 	

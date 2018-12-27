@@ -66,7 +66,7 @@ public class RestaurantTask {
 			waitingLines.getClerkWaitingLine().addLine(clerk);
 		}
 	}
-	public synchronized void cleanTable(int tableNum) {
+	public synchronized void cleanTable(int tableNum)throws Exception{
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		clerk.setClerkState(ClerkState.takeClearTable);
 		//작업

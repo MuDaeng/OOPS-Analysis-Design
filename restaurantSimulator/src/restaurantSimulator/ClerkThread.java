@@ -18,11 +18,9 @@ public class ClerkThread implements Runnable {
 		while(true) {
 			
 			if(clerkStatus.getClerkState() == ClerkState.notWorking) {
-				System.out.println("직원이 할일이 없습니다.");
 				waittime++;
 			}	
 			else {
-				System.out.println("직원이 일을 하고 있는중");
 				waittime=0;
 			}
 			try {

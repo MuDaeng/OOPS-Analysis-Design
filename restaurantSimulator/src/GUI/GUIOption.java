@@ -14,16 +14,16 @@ import restaurantSimulator.TimeOperation;
 public class GUIOption {
 	GUIMain frame;
 	JPanel optionScreen = new JPanel(null);
-	JLabel customerpressureLabel = new JLabel("손님 압박 정도 :");
+	JLabel customerpressureLabel = new JLabel("압박정도 :");
 	JTextField pressureText = new JTextField("");
 	
-	JLabel clerknumberLabel = new JLabel("직원 수 :");
+	JLabel clerknumberLabel = new JLabel("점원 수 :");
 	JTextField clerknumberText = new JTextField("");
 	
 	JLabel tablenumberLabel = new JLabel("테이블 수 :");
 	JTextField tablenumberText = new JTextField("");
 	
-	JButton toMain = new JButton("값 입력");
+	JButton toMain = new JButton("메인으로");
 	TimeOperation timeOperation;
 	
 	public GUIOption(GUIMain frame) {

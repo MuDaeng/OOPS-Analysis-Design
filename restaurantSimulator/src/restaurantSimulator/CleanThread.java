@@ -24,7 +24,11 @@ public class CleanThread implements Runnable {
 			}
 			if(ClerkWaitingLine.getInstance().getListSize() > 0 && flag) {
 				new Thread(() -> {
+					try {
 					new RestaurantTask().cleanTable(tableNum);
+					}catch(Exception e) {
+						new RuntimeException(e);
+					}
 				}).start(); 
 			}
 			try {

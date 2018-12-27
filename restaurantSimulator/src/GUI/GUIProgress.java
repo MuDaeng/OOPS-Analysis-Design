@@ -14,8 +14,8 @@ public class GUIProgress  {
 	private WaitingLines waitingLines;
 	private Progress progress;
 	
-	//나중에 패널 이용해서 바꾸겠음
-	//일단 꾸미는 것 보단 구현 우선
+	//�굹以묒뿉 �뙣�꼸 �씠�슜�빐�꽌 諛붽씀寃좎쓬
+	//�씪�떒 袁몃�몃뒗 寃� 蹂대떒 援ы쁽 �슦�꽑
    
 	String cuswaitline, paywaitline, ordreqline, clerkwaitline, cleantable = "", payhandleclerk = "", reqhandleclerk = "", compressiondegree;
 	String[] tableArray = new String[Option.tableNumber];
@@ -32,27 +32,16 @@ public class GUIProgress  {
 	JLabel reqHandleClerk = new JLabel();
 	JLabel[] table = new JLabel[Option.tableNumber];
 	JLabel compressionDegree = new JLabel();
-	JButton viewResultBtn = new JButton("마감");
+	JButton viewResultBtn = new JButton("결과화면");
 	Thread callProgress;
 	ActionListener viewResult = actionPerformed -> {
-		int size = waitingLines.getCustomerWaitingLine().getListSize();
-		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();
-		List<Customer> cusWaitList = waitingLines.getCustomerWaitingLine().getWaitList();
-		for(int count = 0; count < size; count++) {
-			cusCountList.add(cusWaitList.get(count).getCusWaitTime());
+		try {
+			this.toResultView();
+		}catch(Exception e) {
+			new ResultWindow(frame);
+			frame.setVisible(false);
+			frame.setVisible(true);
 		}
-		size = waitingLines.getClerkWaitingLine().getListSize();
-		List<Integer> clerkCountList = waitingLines.getClerkWaitingLine().getCountList();
-		List<Clerk> clerkWaitList = waitingLines.getClerkWaitingLine().getWaitList();
-		for(int count = 0; count < size-1; count++) {
-			clerkCountList.add(clerkWaitList.get(count).getClerkWaitTime());
-		}
-
-		progress.end();
-		callProgress.interrupt();
-		new ResultWindow(frame);
-		frame.setVisible(false);
-		frame.setVisible(true);
 	};
 
 	public GUIProgress  (GUIMain frame) {
@@ -88,7 +77,7 @@ public class GUIProgress  {
 	private void callcustomer() {
 		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
 	}
-	//12-24 9시
+	//12-24 9�떆
 	private void catchWorking() {
 		int size = progress.getClerks().length;
 		for(int count = 0; count < size; count++) {
@@ -111,8 +100,10 @@ public class GUIProgress  {
 				}
 			}
 		}
+		paywaitline = String.valueOf(progress.getPaymentWaitingLine().getListSize());
+		ordreqline = String.valueOf(progress.getOrderRequestLine().getListSize());
 	}
-	//12-24 9시
+	//12-24 9�떆
 	public void init() {
 		for(int i=0;i<progress.getTables().length;i++)
 			tableArray[i] = progress.getTable(i+1).getTableStatus().getTableState().toString();
@@ -124,7 +115,7 @@ public class GUIProgress  {
 		clerkwaitline = String.valueOf(progress.getClerkWaitingLine().getListSize());
 		cusWaitLine.setText("손님 대기 줄 :" + cuswaitline);
 		payWaitLine.setText("결제 대기 줄 :" + paywaitline);
-		ordReqLine.setText("요청 대기 줄 :" + ordreqline);
+		ordReqLine.setText("요청 대기 줄:" + ordreqline);
 		clerkWaitLine.setText("직원 대기 줄 :" + clerkwaitline);
 		cleanTable.setText("테이블 정리 직원  :" + ((cleantable.length() == 0)? cleantable : cleantable.substring(0,cleantable.length()-1)));
 		payHandleClerk.setText("결제 처리 직원 :" + ((payhandleclerk.length() == 0)? payhandleclerk : payhandleclerk.substring(0, payhandleclerk.length()-1)));
@@ -146,15 +137,13 @@ public class GUIProgress  {
 		reqHandleClerk.setBounds(800, 500, 200, 100);
 		viewResultBtn.setBounds(1200,600, 80, 80);	
 		
-		//이것좀 해결방법좀 알려주소
+		//�씠寃껋� �빐寃곕갑踰뺤� �븣�젮二쇱냼
 		for(int i=0;i<Option.tableNumber;i++)
 		{
 			table[i]=new JLabel();
 		}
 		for(int i=0;i<Option.tableNumber;i++) {
-			table[i].setBounds((30+100*i), 500, 100, 50);
-			if(i>4)
-				table[i].setBounds((30+100*i-500),600,100,50);
+			table[i].setBounds((30+100*(i%5)), 500 + ((i/5)*100), 100, 50);
 		}
       
 		simulationMainScreen.add(compressionDegree);
@@ -170,5 +159,36 @@ public class GUIProgress  {
 		for(int i=0;i<Option.tableNumber;i++) {
 			simulationMainScreen.add(table[i]);
 		}	    	
+	}
+	private void toResultView()throws Exception{
+		int size = waitingLines.getCustomerWaitingLine().getListSize();
+		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();
+		List<Customer> cusWaitList = waitingLines.getCustomerWaitingLine().getWaitList();
+		for(int count = 0; count < size; count++) {
+			cusCountList.add(cusWaitList.get(count).getCusWaitTime());
+		}
+		size = waitingLines.getClerkWaitingLine().getListSize();
+		List<Integer> clerkCountList = waitingLines.getClerkWaitingLine().getCountList();
+		List<Clerk> clerkWaitList = waitingLines.getClerkWaitingLine().getWaitList();
+		for(int count = 0; count < size-1; count++) {
+			clerkCountList.add(clerkWaitList.get(count).getClerkWaitTime());
+		}
+		size = waitingLines.getPaymentWaitingLine().getListSize();
+		List<Integer> payCountList = waitingLines.getPaymentWaitingLine().getCountList();
+		List<Table> payWaitList = waitingLines.getPaymentWaitingLine().getWaitList();
+		for(int count = 0; count < size-1; count++) {
+			payCountList.add(payWaitList.get(count).getCustomer().getPayWaitTime());
+		}
+		size = waitingLines.getOrderRequestLine().getListSize();
+		List<Integer> ordReqCountList = waitingLines.getOrderRequestLine().getCountList();
+		List<Table> ordReqWaitList = waitingLines.getOrderRequestLine().getWaitList();
+		for(int count = 0; count < size-1; count++) {
+			ordReqCountList.add(ordReqWaitList.get(count).getReqWaitTime());
+		}
+		progress.end();
+		callProgress.interrupt();
+		new ResultWindow(frame);
+		frame.setVisible(false);
+		frame.setVisible(true);
 	}
 }

@@ -169,7 +169,7 @@ private class ToPay implements Runnable{
 			}catch(InterruptedException ie) {
 				break;
 			}
-			if((int)Math.random()*5 < 4) {
+			if((int)Math.random()*5 < 5) {
 				synchronized(this) {
 					boolean flag = false;
 					for(int count = 0; count < tables.length; count++) {

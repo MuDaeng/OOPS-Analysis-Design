@@ -36,14 +36,15 @@ public class RestaurantTask {
 	public synchronized void countReqWaitTime() {
 		WaitingLineEnum requestLine = WaitingLineEnum.ORDERREQUESTLINE;
 		for(int count = 0; count < waitingLines.getOrderRequestLine().getListSize(); count++) {
-			int waitTime = waitingLines.getWaitTime(requestLine , count);
+			int waitTime = waitingLines.getWaitTime(requestLine, count);
 			waitTime++;
 			waitingLines.setWaitTime(requestLine, count, waitTime);
 		}
 	}
 	public synchronized void countPayWaitTime() {
 		WaitingLineEnum paymentLine = WaitingLineEnum.PAYMENTWAITINGLINE;
-		for(int count = 0; count < waitingLines.getPaymentWaitingLine().getListSize(); count++) {
+		int size = waitingLines.getPaymentWaitingLine().getListSize();
+		for(int count = 0; count < size; count++) {
 			int waitTime = waitingLines.getWaitTime(paymentLine, count);
 			waitTime++;
 			waitingLines.setWaitTime(paymentLine, count, waitTime);

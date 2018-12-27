@@ -25,4 +25,11 @@ public class OrderRequestLine extends WaitingLine<Table>{
 	public boolean removeLine(Table index) {
 		return super.removeLine(index, index.getReqWaitTime());
 	}
+	@Override
+	public synchronized Table pop() {
+		// TODO Auto-generated method stub
+		this.getCountList().add(this.getWaitList().get(0).getReqWaitTime());
+		return super.pop();
+	}
+	
 }

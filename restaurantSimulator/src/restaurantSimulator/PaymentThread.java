@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import waitingLine.ClerkWaitingLine;
+import waitingLine.OrderRequestLine;
 import waitingLine.PaymentWaitingLine;
 
 public class PaymentThread implements Runnable{
@@ -27,17 +28,17 @@ public class PaymentThread implements Runnable{
 			}, 1000, 1000 );
 			while(true) {
 				synchronized(this) {
-					if((ClerkWaitingLine.getInstance().getListSize()) > 0 && (PaymentWaitingLine.getInstance().getListSize() > 0)) {
+					if((ClerkWaitingLine.getInstance().getListSize() > 0) && (PaymentWaitingLine.getInstance().getListSize() > 0)) {
 						task.payment();
 						timer.cancel();
 						break;
 					}
-				}
-				try {
-					Thread.sleep(501);	
-				}catch(InterruptedException ie) {
-					timer.cancel();
-					return;
+					try {
+						Thread.sleep(502);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
+					}catch(InterruptedException ie) {
+						timer.cancel();
+						return;
+					}
 				}
 			}
 		}

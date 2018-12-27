@@ -161,15 +161,33 @@ private class ToPay implements Runnable{
 				break;
 			}
 			if((int)Math.random()*5 < 4) {
-				for(int count = 0; count < tables.length; count++) {
-					if(tables[count].getTableStatus().getTableState() == TableState.isCompleted) {
-						new RestaurantTask().addPayLine(tables[count].getTableStatus());
-					}
+				synchronized(this) {
+					boolean flag = false;
+					for(int count = 0; count < tables.length; count++) {
+						if(tables[count].getTableStatus().getTableState() == TableState.isCompleted && tables[count].getTableStatus().getCustomer() != null) {
+							if(paymentWaitingLine.getListSize() == 0) {
+								new RestaurantTask().addPayLine(tables[count].getTableStatus());
+								continue;
+							}else {
+								int size = paymentWaitingLine.getListSize();
+								for(int indexNum = 0; indexNum < size; indexNum++) {
+									if(tables[count].getTableStatus().getTableNum() == paymentWaitingLine.get(indexNum).getTableNum()) {
+										flag = true;
+										break;
+									}
+								}
+								if(!(flag)) {
+									new RestaurantTask().addPayLine(tables[count].getTableStatus());
+									break;
+								}else {
+									continue;
+								}	
+							}
+						}
+					}	
 				}
 			}
-
 		}
 	}
-	
 }
 }

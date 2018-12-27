@@ -26,6 +26,12 @@ public class PaymentWaitingLine extends WaitingLine<Table> {
 	public boolean removeLine(Table index) {
 		return super.removeLine(index, index.getCustomer().getPayWaitTime());
 	}
+	@Override
+	public synchronized Table pop() {
+		// TODO Auto-generated method stub
+		this.getCountList().add(this.getWaitList().get(0).getCustomer().getPayWaitTime());
+		return super.pop();
+	}
 	public Payment getPayment() {
 		return payment;
 	}

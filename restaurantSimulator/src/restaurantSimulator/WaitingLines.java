@@ -33,7 +33,7 @@ public class WaitingLines {
 	public int getWaitTime(WaitingLineEnum enumValue, int count) {
 		return enumValue.getWaitTime(count);
 	}
-	public void setWaitTime(WaitingLineEnum enumValue, int index, int count) {
+	public synchronized void setWaitTime(WaitingLineEnum enumValue, int index, int count) {
 		enumValue.setWaitTime(index, count);
 	}
 }

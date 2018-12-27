@@ -112,9 +112,9 @@ public class TimeOperation {
 		resultDTO.setCusAvgWaitingTime(calculateAvg(getCountList()));
 		resultDTO.setCusMaxWaitingTime(calculateMax(getCountList()));
 		
-		waitingLine = ClerkWaitingLine.getInstance();
-		resultDTO.setClerkAvgWaitingTime(calculateAvg(getCountList()));
-		resultDTO.setClerkMaxWaitingTime(calculateMax(getCountList()));
+//		waitingLine = ClerkWaitingLine.getInstance();
+//		resultDTO.setClerkAvgWaitingTime(calculateAvg(getCountList()));
+//		resultDTO.setClerkMaxWaitingTime(calculateMax(getCountList()));
 		
 		waitingLine = PaymentWaitingLine.getInstance();
 		resultDTO.setPayAvgWaitingTime(calculateAvg(getCountList()));

@@ -119,7 +119,7 @@ public class TimeOperation {
 		waitingLine = PaymentWaitingLine.getInstance();
 		resultDTO.setPayAvgWaitingTime(calculateAvg(getCountList()));
 		resultDTO.setPayMaxWaitingTime(calculateMax(getCountList()));
-		int
+
 		waitingLine = OrderRequestLine.getInstance();
 		resultDTO.setReqAvgWaitingTime(calculateAvg(getCountList()));
 		resultDTO.setReqMaxWaitingTime(calculateMax(getCountList()));

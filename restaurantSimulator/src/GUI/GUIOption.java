@@ -26,6 +26,7 @@ public class GUIOption {
 	JButton toMain = new JButton("메인으로");
 	TimeOperation timeOperation;
 	
+	//setting frame from GUIMain and add actionListener of Button
 	public GUIOption(GUIMain frame) {
 		this.frame = frame;
 		this.frame.setContentPane(optionScreen);
@@ -34,7 +35,7 @@ public class GUIOption {
 		
 		optionview();
 	}
-	
+	//setting location of components in panel
 	public void optionview() {
 		customerpressureLabel.setBounds(500, 200, 150, 50);
 		pressureText.setBounds(700, 200, 150, 50);
@@ -73,7 +74,6 @@ public class GUIOption {
 			Option.customerPressure = customerPressureI;
 			Option.clerkNumber = clerkNumberI;
 			Option.tableNumber = tableNumberI;
-			timeOperation.inputOptionToResultDTO(Option.customerPressure, Option.clerkNumber);
 			frame.dispose();
 			new GUIMain();		
 		}	      

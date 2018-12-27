@@ -9,7 +9,7 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	private ClerkWaitingLine() {
 		super(new ArrayList<Clerk>());
 	}
-	
+	//Design pattern of Singleton
 	private static class Singleton{
 		private static ClerkWaitingLine instance = new ClerkWaitingLine();
 	}
@@ -27,7 +27,7 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	public boolean removeLine(Clerk index) {
 		return super.removeLine(index, index.getClerkWaitTime());
 	}
-
+	//count List for calculate
 	@Override
 	public synchronized Clerk pop() {
 		// TODO Auto-generated method stub

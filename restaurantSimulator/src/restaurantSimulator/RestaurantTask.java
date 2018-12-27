@@ -1,6 +1,5 @@
 package restaurantSimulator;
 
-import java.util.*;
 import waitingLine.*;
 
 public class RestaurantTask {
@@ -11,27 +10,36 @@ public class RestaurantTask {
 		waitingLines = new WaitingLines();
 		progress = Progress.getInstance();
 	}
+	//set customer to sit down to table from waitingLine
 	public void customertotable(Table table) {
 		Customer customer = waitingLines.getCustomerWaitingLine().pop();
 		progress.getTable(table.getTableNum()).occupyCustomer(customer);
 		addOrderLine(progress.getTable(table.getTableNum()).getTableStatus());
 	}
+	//just addLine in orderRequestLine
 	private void addOrderLine(Table table) {
 		waitingLines.getOrderRequestLine().addLine(table);
 	}
+	//just addLine in addPaymentLine
 	public void addPayLine(Table table) {
 		waitingLines.getPaymentWaitingLine().addLine(table);
 	}
-	public synchronized void resolveOrder() {
+	//get first clerk of index then take order and end of method add clerk in clerkWaitingLine
+	public synchronized void resolveOrder(){
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
-		Table table = waitingLines.getOrderRequestLine().pop();
-		clerk.setClerkState(ClerkState.takeOrder);
-		//작업
-		clerk.handleTask();
-		Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
-		Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setTableState(TableState.isCompleted);
-		clerk.setClerkState(ClerkState.notWorking);
-		waitingLines.getClerkWaitingLine().addLine(clerk);	
+		try {
+			Table table = waitingLines.getOrderRequestLine().pop();
+			clerk.setClerkState(ClerkState.takeOrder);
+			//작업
+			clerk.handleTask();
+			Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setReqWaitTime(0);
+			Progress.getInstance().getTable(table.getTableNum()).getTableStatus().setTableState(TableState.isCompleted);
+		}catch(NullPointerException ne){
+			new RuntimeException(ne);
+		}finally {
+			clerk.setClerkState(ClerkState.notWorking);
+			waitingLines.getClerkWaitingLine().addLine(clerk);	
+		}
 	}
 	public synchronized void countReqWaitTime() {
 		WaitingLineEnum requestLine = WaitingLineEnum.ORDERREQUESTLINE;
@@ -50,6 +58,7 @@ public class RestaurantTask {
 			waitingLines.setWaitTime(paymentLine, count, waitTime);
 		}
 	}
+	//get first clerk of index then take payment and end of method add clerk in clerkWaitingLine
 	public synchronized void payment() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		try {
@@ -57,23 +66,28 @@ public class RestaurantTask {
 			clerk.setClerkState(ClerkState.takePayment);;
 			//작업
 			clerk.handleTask();
-			clerk.setClerkState(ClerkState.notWorking);
 			Progress.getInstance().getTable(table.getTableNum()).occupyCustomer(null);
 		}catch(NullPointerException ne) {
 			new RuntimeException(ne);
 			return;	
 		}finally {
+			clerk.setClerkState(ClerkState.notWorking);
 			waitingLines.getClerkWaitingLine().addLine(clerk);
 		}
 	}
-	public synchronized void cleanTable(int tableNum)throws Exception{
+	public synchronized void cleanTable(int tableNum) {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
-		clerk.setClerkState(ClerkState.takeClearTable);
-		//작업
-		clerk.handleTask();
-		progress.getTable(tableNum).getTableStatus().setTableState(TableState.isEmpty);
-		clerk.setClerkState(ClerkState.notWorking);
-		waitingLines.getClerkWaitingLine().addLine(clerk);
+		try {
+			clerk.setClerkState(ClerkState.takeClearTable);
+			//작업
+			clerk.handleTask();
+			progress.getTable(tableNum).getTableStatus().setTableState(TableState.isEmpty);
+		}catch(NullPointerException ne) {
+			new RuntimeException(ne);
+		}finally {
+			clerk.setClerkState(ClerkState.notWorking);
+			waitingLines.getClerkWaitingLine().addLine(clerk);	
+		}
 	}
 	public void customerCreate() {
 		Customer customer = new Customer(0,0);

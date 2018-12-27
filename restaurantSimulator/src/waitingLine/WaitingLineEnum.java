@@ -5,7 +5,7 @@ import restaurantSimulator.WaitingLines;
 public enum WaitingLineEnum {
 	CLERKWAITINGLINE, CUSTOMERWAITINGLINE, ORDERREQUESTLINE, PAYMENTWAITINGLINE;
 	
-
+	//get waitTime from distinct Object
 	public int getWaitTime(int indexNum) {
 		switch(this) {
 		case CLERKWAITINGLINE :
@@ -25,6 +25,7 @@ public enum WaitingLineEnum {
 			return 0;
 		}
 	}
+	//set waitTime to distinct Object
 	public synchronized void setWaitTime(int index, int waitTime) {
 		switch(this) {
 		case CLERKWAITINGLINE :

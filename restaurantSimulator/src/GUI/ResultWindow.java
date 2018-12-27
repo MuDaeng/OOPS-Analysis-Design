@@ -31,6 +31,7 @@ public class ResultWindow {
 	private TimeOperation timeOperation;
 	private ResultDTO result;
 	
+	//setting frame and get Result
 	public ResultWindow(GUIMain frame) {
 		
 		this.frame = frame;
@@ -42,6 +43,7 @@ public class ResultWindow {
 		resultview();      
 	}	
 	
+	//setting there's text and location of them in panel
 	public void resultview() {
 		compressionDegree.setText("손님 압박 정도 : " + result.getCompressionDegree());
 		customerNumber.setText("손님 수 : " + result.getCustomerNumber());

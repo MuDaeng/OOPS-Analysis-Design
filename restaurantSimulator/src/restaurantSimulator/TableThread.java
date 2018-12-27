@@ -1,7 +1,5 @@
 package restaurantSimulator;
 
-import java.util.Timer;
-
 public class TableThread implements Runnable {
 	private Table tableStatus;
 	public TableThread(int tableNum) {
@@ -11,7 +9,6 @@ public class TableThread implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		//고치자
 		while(true) {
 			try {
 				Thread.sleep(1000);	
@@ -20,12 +17,11 @@ public class TableThread implements Runnable {
 			}
 		}
 	}
-
-	public Table occupyCustomer(Customer customer) {
+	//if null is out customer,else sit down customer to table
+	public void occupyCustomer(Customer customer) {
 		this.tableStatus.setCustomer(customer);
 		if(customer != null) tableStatus.setTableState(TableState.isOccupying);
 		else tableStatus.setTableState(TableState.isCleanable);
-		return this.tableStatus;
 	}
 	public Table getTableStatus() {
 		return this.tableStatus;

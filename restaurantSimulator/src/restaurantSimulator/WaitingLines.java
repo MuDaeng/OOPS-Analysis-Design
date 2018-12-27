@@ -8,6 +8,7 @@ public class WaitingLines {
 	private OrderRequestLine orderRequestLine;
 	private PaymentWaitingLine paymentWaitingLine;
 	
+	//take care of WaitingLines
 	public WaitingLines() {
 		clerkWaitingLine = ClerkWaitingLine.getInstance();
 		customerWaitingLine = CustomerWaitingLine.getInstance();

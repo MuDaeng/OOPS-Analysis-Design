@@ -9,7 +9,7 @@ public class OrderRequestLine extends WaitingLine<Table>{
 	private OrderRequestLine() {
 		super(new ArrayList<Table>());
 	}
-	
+	//Design pattern of Singleton
 	private static class Singleton {
 		private static OrderRequestLine instance = new OrderRequestLine();
 	}
@@ -25,6 +25,7 @@ public class OrderRequestLine extends WaitingLine<Table>{
 	public boolean removeLine(Table index) {
 		return super.removeLine(index, index.getReqWaitTime());
 	}
+	//count List for calculate
 	@Override
 	public synchronized Table pop() {
 		// TODO Auto-generated method stub

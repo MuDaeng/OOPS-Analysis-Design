@@ -19,10 +19,12 @@ public class Progress {
 	private List<Thread> tableList;
 	private List<Thread> clerkList;
 	
+	//Design pattern of Singleton
 	private static class Singleton {
 		private static Progress instance = new Progress();
 	}
 	
+	//controller of Simulator, initialize waitingLines and Thread
 	private Progress() {
 		clerkWaitingLine = ClerkWaitingLine.getInstance();
 		customerWaitingLine = CustomerWaitingLine.getInstance();
@@ -59,6 +61,7 @@ public class Progress {
 	public static Progress getInstance() {
 		return Singleton.instance;
 	}
+	//initialize Tables and Clerks
 	public void init() {
 		tableList = new ArrayList<Thread>();
 		clerkList = new ArrayList<Thread>();
@@ -89,7 +92,7 @@ public class Progress {
 			clerkList.add(makeClerk);
 		}
 	}
-	
+	//start progress, start Threads
 	public void progressStart() {
 		requestThread.setDaemon(true);
 		paymentThread.setDaemon(true);
@@ -110,18 +113,20 @@ public class Progress {
 	public TableThread[] getTables() {
 		return tables;
 	}
+	//create customer for Math.random()
 	private void callCustomer() {
 		RestaurantTask task = new RestaurantTask();
 		int cusCreate = (int)(Math.random()*25+1);
 		if(cusCreate<Option.customerPressure*5)
 			task.customerCreate();
-	}   
-	//12-24 9시
+	}
+	//customer to table
 	private void cusToTable(int i) {
 		Table tmp = tables[i].getTableStatus();
 		RestaurantTask task = new RestaurantTask();
 		task.customertotable(tmp);
 	}
+	//input interrupt to Threads for stop progress
 	public void end() {
 		requestThread.interrupt();
 		paymentThread.interrupt();
@@ -159,7 +164,8 @@ public class Progress {
 		return clerkList;
 	}
 private class ToPay implements Runnable{
-
+	//Complexity of Time is n square 2
+	//if exist table that has isCompleted and has customer add PayLine	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

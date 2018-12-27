@@ -1,7 +1,5 @@
 package restaurantSimulator;
 
-import java.util.Timer;
-
 import waitingLine.ClerkWaitingLine;
 
 public class CleanThread implements Runnable {
@@ -9,6 +7,7 @@ public class CleanThread implements Runnable {
 	public CleanThread() {
 	}
 	
+	//when exist table that has isCleanable, take care of clean table and update 0.5 seconds
 	@Override
 	public void run() {   
 
@@ -25,11 +24,11 @@ public class CleanThread implements Runnable {
 			if(ClerkWaitingLine.getInstance().getListSize() > 0 && flag) {
 				new Thread(() -> {
 					try {
-					new RestaurantTask().cleanTable(tableNum);
-					}catch(Exception e) {
-						new RuntimeException(e);
+						new RestaurantTask().cleanTable(tableNum);
+					}catch(IndexOutOfBoundsException ie) {
+						new RuntimeException(ie);
 					}
-				}).start(); 
+				}).start();
 			}
 			try {
 				Thread.sleep(499);

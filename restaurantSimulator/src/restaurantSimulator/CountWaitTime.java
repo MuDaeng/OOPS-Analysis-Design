@@ -5,7 +5,8 @@ import java.util.TimerTask;
 import waitingLine.WaitingLineEnum;
 
 public class CountWaitTime extends TimerTask {
-
+	
+	//just count up waitTimes in WaitingLines
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

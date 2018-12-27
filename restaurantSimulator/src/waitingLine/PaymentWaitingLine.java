@@ -9,6 +9,7 @@ public class PaymentWaitingLine extends WaitingLine<Table> {
 	private PaymentWaitingLine () {
 		super(new ArrayList<Table>());
 	}
+	//Design pattern of Singleton
 	private static class Singleton{
 		private static PaymentWaitingLine instance = new PaymentWaitingLine();
 	}
@@ -23,6 +24,7 @@ public class PaymentWaitingLine extends WaitingLine<Table> {
 	public boolean removeLine(Table index) {
 		return super.removeLine(index, index.getCustomer().getPayWaitTime());
 	}
+	//count List for calculate
 	@Override
 	public synchronized Table pop() {
 		// TODO Auto-generated method stub

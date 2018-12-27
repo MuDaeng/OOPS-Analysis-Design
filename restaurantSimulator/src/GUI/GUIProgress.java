@@ -13,10 +13,7 @@ import waitingLine.WaitingLineEnum;
 public class GUIProgress  {   
 	private WaitingLines waitingLines;
 	private Progress progress;
-	
-	//�굹以묒뿉 �뙣�꼸 �씠�슜�빐�꽌 諛붽씀寃좎쓬
-	//�씪�떒 袁몃�몃뒗 寃� 蹂대떒 援ы쁽 �슦�꽑
-   
+
 	String cuswaitline, paywaitline, ordreqline, clerkwaitline, cleantable = "", payhandleclerk = "", reqhandleclerk = "", compressiondegree;
 	String[] tableArray = new String[Option.tableNumber];
    
@@ -34,6 +31,7 @@ public class GUIProgress  {
 	JLabel compressionDegree = new JLabel();
 	JButton viewResultBtn = new JButton("결과화면");
 	Thread callProgress;
+	//anonymousClass for that go to ResultWindow
 	ActionListener viewResult = actionPerformed -> {
 		try {
 			this.toResultView();
@@ -43,10 +41,12 @@ public class GUIProgress  {
 			frame.setVisible(true);
 		}
 	};
-
+	
+	//setting for start progress
 	public GUIProgress  (GUIMain frame) {
 		this.frame = frame;
 		this.frame.setContentPane(simulationMainScreen);
+		//thread for updates texts
 		callProgress = new Thread(() -> {
 			while(true) {
 				callcustomer();
@@ -74,10 +74,11 @@ public class GUIProgress  {
 		progress.progressStart();
 		callProgress.start();
 	}
+	//just checking customers in waitingLine
 	private void callcustomer() {
 		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
 	}
-	//12-24 9�떆
+	//if Working input String is there's clerkNumber
 	private void catchWorking() {
 		int size = progress.getClerks().length;
 		for(int count = 0; count < size; count++) {
@@ -103,14 +104,14 @@ public class GUIProgress  {
 		paywaitline = String.valueOf(progress.getPaymentWaitingLine().getListSize());
 		ordreqline = String.valueOf(progress.getOrderRequestLine().getListSize());
 	}
-	//12-24 9�떆
+	//initialize and add actionListener of Button
 	public void init() {
 		for(int i=0;i<progress.getTables().length;i++)
 			tableArray[i] = progress.getTable(i+1).getTableStatus().getTableState().toString();
 
 		viewResultBtn.addActionListener(viewResult);
 	}	
-   
+	//setting text
 	private void settext() {
 		clerkwaitline = String.valueOf(progress.getClerkWaitingLine().getListSize());
 		cusWaitLine.setText("손님 대기 줄 :" + cuswaitline);
@@ -126,6 +127,7 @@ public class GUIProgress  {
 			table[i].setText("테이블"+(i+1)+":"+ tableArray[i]);
 		}
 	}
+	//setting location of components in panel
 	public void view() {  
 		compressionDegree.setBounds(800, 20, 200, 100);
 		cusWaitLine.setBounds(30, 50, 200, 100);
@@ -137,7 +139,6 @@ public class GUIProgress  {
 		reqHandleClerk.setBounds(800, 500, 200, 100);
 		viewResultBtn.setBounds(1200,600, 80, 80);	
 		
-		//�씠寃껋� �빐寃곕갑踰뺤� �븣�젮二쇱냼
 		for(int i=0;i<Option.tableNumber;i++)
 		{
 			table[i]=new JLabel();
@@ -160,6 +161,7 @@ public class GUIProgress  {
 			simulationMainScreen.add(table[i]);
 		}	    	
 	}
+	//end progress and go to ResultWindow
 	private void toResultView()throws Exception{
 		int size = waitingLines.getCustomerWaitingLine().getListSize();
 		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();

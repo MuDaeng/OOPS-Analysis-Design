@@ -34,7 +34,7 @@ public class PaymentThread implements Runnable{
 						break;
 					}
 					try {
-						Thread.sleep(502);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
+						Thread.sleep(503);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
 					}catch(InterruptedException ie) {
 						timer.cancel();
 						return;

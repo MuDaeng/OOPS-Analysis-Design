@@ -52,13 +52,19 @@ public class RestaurantTask {
 	}
 	public void payment() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
-		Table table = waitingLines.getPaymentWaitingLine().pop();
-		clerk.setClerkState(ClerkState.takePayment);;
-		//작업
-		clerk.handleTask();
-		clerk.setClerkState(ClerkState.notWorking);
-		Progress.getInstance().getTable(table.getTableNum()).occupyCustomer(null);
-		waitingLines.getClerkWaitingLine().addLine(clerk);
+		try {
+			Table table = waitingLines.getPaymentWaitingLine().pop();
+			clerk.setClerkState(ClerkState.takePayment);;
+			//작업
+			clerk.handleTask();
+			clerk.setClerkState(ClerkState.notWorking);
+			Progress.getInstance().getTable(table.getTableNum()).occupyCustomer(null);
+		}catch(NullPointerException ne) {
+			new RuntimeException(ne);
+			return;	
+		}finally {
+			waitingLines.getClerkWaitingLine().addLine(clerk);
+		}
 	}
 	public void cleanTable(int tableNum) {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();

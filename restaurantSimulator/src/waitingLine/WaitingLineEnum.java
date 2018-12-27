@@ -15,7 +15,12 @@ public enum WaitingLineEnum {
 		case ORDERREQUESTLINE :
 			return OrderRequestLine.getInstance().getWaitList().get(indexNum).getReqWaitTime();
 		case PAYMENTWAITINGLINE :
-			return PaymentWaitingLine.getInstance().getWaitList().get(indexNum).getCustomer().getPayWaitTime();
+			try {
+				return PaymentWaitingLine.getInstance().getWaitList().get(indexNum).getCustomer().getPayWaitTime();
+			}catch(NullPointerException ne) {
+				new RuntimeException(ne);
+				return 0;
+			}
 		default :
 			return 0;
 		}
@@ -33,8 +38,13 @@ public enum WaitingLineEnum {
 			OrderRequestLine.getInstance().getWaitList().get(index).setReqWaitTime(waitTime);
 			break;
 		case PAYMENTWAITINGLINE :
-			PaymentWaitingLine.getInstance().getWaitList().get(index).getCustomer().setPayWaitTime(waitTime);
-			break;
+			try {
+				PaymentWaitingLine.getInstance().getWaitList().get(index).getCustomer().setPayWaitTime(waitTime);
+				break;	
+			}catch(NullPointerException ne){
+				new RuntimeException(ne);
+				break;
+			}
 		default :
 			return;
 		}

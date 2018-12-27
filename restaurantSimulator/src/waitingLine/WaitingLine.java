@@ -24,7 +24,7 @@ public abstract class WaitingLine<E> {
 	public synchronized E get(int index) {
 		return waitList.get(index);
 	}
-	public synchronized E pop(){
+	protected synchronized E pop(){
 		int first = 0;
 		return waitList.remove(first);
 	}

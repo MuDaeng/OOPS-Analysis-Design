@@ -22,7 +22,7 @@ public class RestaurantTask {
 	public void addPayLine(Table table) {
 		waitingLines.getPaymentWaitingLine().addLine(table);
 	}
-	public void resolveOrder() {
+	public synchronized void resolveOrder() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		Table table = waitingLines.getOrderRequestLine().pop();
 		clerk.setClerkState(ClerkState.takeOrder);
@@ -50,7 +50,7 @@ public class RestaurantTask {
 			waitingLines.setWaitTime(paymentLine, count, waitTime);
 		}
 	}
-	public void payment() {
+	public synchronized void payment() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		try {
 			Table table = waitingLines.getPaymentWaitingLine().pop();
@@ -66,7 +66,7 @@ public class RestaurantTask {
 			waitingLines.getClerkWaitingLine().addLine(clerk);
 		}
 	}
-	public void cleanTable(int tableNum) {
+	public synchronized void cleanTable(int tableNum) {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		clerk.setClerkState(ClerkState.takeClearTable);
 		//작업

@@ -14,7 +14,7 @@ public class TableThread implements Runnable {
 		//고치자
 		while(true) {
 			try {
-				Thread.sleep(50);	
+				Thread.sleep(1000);	
 			}catch(InterruptedException ie) {
 				break;
 			}

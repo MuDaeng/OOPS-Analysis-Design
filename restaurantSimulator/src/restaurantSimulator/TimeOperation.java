@@ -31,8 +31,9 @@ public class TimeOperation {
 			System.out.println("잘못됨");
 			return 0;
 		}else {
-			Iterator<Integer> iterator = countList.iterator();
-			while(iterator.hasNext()) value += iterator.next();
+			for(int count = 0; count < countList.size(); count++) {
+				value += countList.get(count);
+			}
 			return ( value / countNum );
 		}
 	}
@@ -86,9 +87,9 @@ public class TimeOperation {
 			
 			tmp.setCusMaxWaitingTime(Integer.valueOf(index.get("cusMaxWaitingTime").toString()));
 			tmp.setCusAvgWaitingTime(Integer.valueOf(index.get("cusAvgWaitingTime").toString()));
-			
-			tmp.setClerkMaxWaitingTime(Integer.valueOf(index.get("clerkMaxWaitingTime").toString()));
-			tmp.setClerkAvgWaitingTime(Integer.valueOf(index.get("clerkAvgWaitingTime").toString()));
+//			
+//			tmp.setClerkMaxWaitingTime(Integer.valueOf(index.get("clerkMaxWaitingTime").toString()));
+//			tmp.setClerkAvgWaitingTime(Integer.valueOf(index.get("clerkAvgWaitingTime").toString()));
 			
 			tmp.setPayMaxWaitingTime(Integer.valueOf(index.get("payMaxWaitingTime").toString()));
 			tmp.setPayAvgWaitingTime(Integer.valueOf(index.get("payAvgWaitingTime").toString()));
@@ -112,9 +113,9 @@ public class TimeOperation {
 		resultDTO.setCusAvgWaitingTime(calculateAvg(getCountList()));
 		resultDTO.setCusMaxWaitingTime(calculateMax(getCountList()));
 		
-		waitingLine = ClerkWaitingLine.getInstance();
-		resultDTO.setClerkAvgWaitingTime(calculateAvg(getCountList()));
-		resultDTO.setClerkMaxWaitingTime(calculateMax(getCountList()));
+//		waitingLine = ClerkWaitingLine.getInstance();
+//		resultDTO.setClerkAvgWaitingTime(calculateAvg(getCountList()));
+//		resultDTO.setClerkMaxWaitingTime(calculateMax(getCountList()));
 		
 		waitingLine = PaymentWaitingLine.getInstance();
 		resultDTO.setPayAvgWaitingTime(calculateAvg(getCountList()));

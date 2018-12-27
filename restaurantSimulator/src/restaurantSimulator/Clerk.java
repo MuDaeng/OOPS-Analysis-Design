@@ -46,7 +46,7 @@ public class Clerk {
 		this.clerkState = clerkState;
 	}
 	//직원이 일을 처리할 때 3초가 걸리고 능력이 좋을 수록 더 빨라짐
-	public Clerk handleTask() {
+	public void handleTask() {
 		if(this.clerkState != ClerkState.notWorking) {	
 			try {
 				long takeWorkTime = 3000;
@@ -55,6 +55,5 @@ public class Clerk {
 				}
 			}catch(InterruptedException ie) {}
 		}		
-		return this;
 	}	
 }

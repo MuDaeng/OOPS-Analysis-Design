@@ -15,7 +15,6 @@ public class ClerkThread implements Runnable {
 		//고치자
 		int waittime = 0;
 		//12-24 9시
-		ClerkWaitingLine.getInstance().addLine(clerkStatus);
 		while(true) {
 			
 			if(clerkStatus.getClerkState() == ClerkState.notWorking) {

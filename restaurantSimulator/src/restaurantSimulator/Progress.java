@@ -15,6 +15,7 @@ public class Progress {
 	private Thread cleanThread;
 	private Thread cusCreateThread;
 	private Thread addPayLineThread;
+	private Timer countTimer;
 	private List<Thread> tableList;
 	private List<Thread> clerkList;
 	
@@ -35,11 +36,13 @@ public class Progress {
 				synchronized(this) {
 					callCustomer();
 					if(customerWaitingLine.getListSize() > 0) {
-						for(int count = 0; count < tables.length; count++) {
-							if(tables[count].getTableStatus().getTableState() == TableState.isEmpty) {
-								cusToTable(count);
-								break;	
-							}else continue;
+						if(clerkWaitingLine.getListSize()> 0) {
+							for(int count = 0; count < tables.length; count++) {
+								if(tables[count].getTableStatus().getTableState() == TableState.isEmpty) {
+									cusToTable(count);
+									break;	
+								}else continue;
+							}
 						}
 					}
 				}	
@@ -51,7 +54,7 @@ public class Progress {
 			}
 		});
 		addPayLineThread = new Thread(new ToPay());
-		 
+		countTimer = new Timer();
 	}
 	public static Progress getInstance() {
 		return Singleton.instance;
@@ -69,6 +72,7 @@ public class Progress {
 		for(int count = 0; count < Option.clerkNumber; count++) {
 			ClerkThread index = new ClerkThread(1,1,count+1);
 			tmp.add(index);
+			clerkWaitingLine.addLine(index.getClerkStatus());
 		}
 		clerks = new ClerkThread[tmp.size()];
 		clerks = (ClerkThread[]) tmp.toArray(clerks);
@@ -97,6 +101,7 @@ public class Progress {
 		cleanThread.start();
 		cusCreateThread.start();
 		addPayLineThread.start();
+		countTimer.schedule(new CountWaitTime(), 1000, 1000);
 	}
 	
 	public ClerkThread[] getClerks() {
@@ -129,6 +134,7 @@ public class Progress {
 		for(int count = 0; count < clerkList.size(); count++) {
 			clerkList.get(count).interrupt();
 		}
+		countTimer.cancel();
 	}
 	public ClerkThread getClerk(int clerkNumber) {
 		return clerks[clerkNumber-1];
@@ -149,6 +155,9 @@ public class Progress {
 	public PaymentWaitingLine getPaymentWaitingLine() {
 		return paymentWaitingLine;
 	}	
+	public List<Thread> getClerkList() {
+		return clerkList;
+	}
 private class ToPay implements Runnable{
 
 	@Override

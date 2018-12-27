@@ -17,24 +17,15 @@ public class RequestThread implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		while(true) {
-			Timer timer = new Timer();
-			timer.schedule(new TimerTask() {
-				@Override
-				public synchronized void run() {
-					task.countReqWaitTime();
-				}
-			}, 1000, 1000 );
 			while(true) {
 				synchronized(this) {
 					if((ClerkWaitingLine.getInstance().getListSize() > 0) && (OrderRequestLine.getInstance().getListSize() > 0)) {
 						task.resolveOrder();
-						timer.cancel();
 						break;
 					}
 					try {
 						Thread.sleep(502);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
 					}catch(InterruptedException ie) {
-						timer.cancel();
 						return;
 					}
 				}

@@ -26,7 +26,6 @@ public enum WaitingLineEnum {
 		}
 	}
 	public synchronized void setWaitTime(int index, int waitTime) {
-		WaitingLines wl = new WaitingLines();
 		switch(this) {
 		case CLERKWAITINGLINE :
 			ClerkWaitingLine.getInstance().getWaitList().get(index).setClerkWaitTime(waitTime);

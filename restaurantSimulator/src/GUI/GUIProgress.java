@@ -44,12 +44,13 @@ public class GUIProgress  {
 		size = waitingLines.getClerkWaitingLine().getListSize();
 		List<Integer> clerkCountList = waitingLines.getClerkWaitingLine().getCountList();
 		List<Clerk> clerkWaitList = waitingLines.getClerkWaitingLine().getWaitList();
-		for(int count = 0; count < size; count++) {
+		for(int count = 0; count < size-1; count++) {
 			clerkCountList.add(clerkWaitList.get(count).getClerkWaitTime());
 		}
-		new ResultWindow(frame);
+
 		progress.end();
 		callProgress.interrupt();
+		new ResultWindow(frame);
 		frame.setVisible(false);
 		frame.setVisible(true);
 	};

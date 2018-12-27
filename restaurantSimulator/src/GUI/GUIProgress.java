@@ -8,6 +8,8 @@ import java.util.List;
 
 import restaurantSimulator.*;
 
+import waitingLine.WaitingLineEnum;
+
 public class GUIProgress  {   
 	private WaitingLines waitingLines;
 	private Progress progress;
@@ -15,7 +17,7 @@ public class GUIProgress  {
 	//나중에 패널 이용해서 바꾸겠음
 	//일단 꾸미는 것 보단 구현 우선
    
-	String cuswaitline, paywaitline, ordreqline, clerkwaitline, cleantable, payhandleclerk, reqhandleclerk, compressiondegree;
+	String cuswaitline, paywaitline, ordreqline, clerkwaitline, cleantable = "", payhandleclerk = "", reqhandleclerk = "", compressiondegree;
 	String[] tableArray = new String[Option.tableNumber];
    
  
@@ -31,19 +33,25 @@ public class GUIProgress  {
 	JLabel[] table = new JLabel[Option.tableNumber];
 	JLabel compressionDegree = new JLabel();
 	JButton viewResultBtn = new JButton("마감");
-	ActionListener viewResult = e -> {
+	ActionListener viewResult = actionPerformed -> {
 		int size = waitingLines.getCustomerWaitingLine().getListSize();
 		List<Integer> cusCountList = waitingLines.getCustomerWaitingLine().getCountList();
 		List<Customer> cusWaitList = waitingLines.getCustomerWaitingLine().getWaitList();
 		for(int count = 0; count < size; count++) {
 			cusCountList.add(cusWaitList.get(count).getCusWaitTime());
 		}
+		size = waitingLines.getClerkWaitingLine().getListSize();
+		List<Integer> clerkCountList = waitingLines.getClerkWaitingLine().getCountList();
+		List<Clerk> clerkWaitList = waitingLines.getClerkWaitingLine().getWaitList();
+		for(int count = 0; count < size; count++) {
+			clerkCountList.add(clerkWaitList.get(count).getClerkWaitTime());
+		}
 		new ResultWindow(frame);
 		progress.end();
 		frame.setVisible(false);
 		frame.setVisible(true);
 	};
-	
+
 	public GUIProgress  (GUIMain frame) {
 		this.frame = frame;
 		this.frame.setContentPane(simulationMainScreen);
@@ -53,6 +61,7 @@ public class GUIProgress  {
 		progress.init();
 		
 		compressiondegree = String.valueOf(Option.customerPressure);
+		
 		init();
 		view();
 		new Thread(){
@@ -60,14 +69,15 @@ public class GUIProgress  {
 			public void run(){
 				while(true) {
 					callcustomer();
-					settext();
+					catchWorking();
 					//12-24 9시
 					for(int i=0;i<Option.tableNumber;i++) {
 						if(waitingLines.getCustomerWaitingLine().getListSize()>0)
 							cusToTable(i);
 					}	
+					settext();
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(500);
 					}catch(InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -78,10 +88,8 @@ public class GUIProgress  {
 		progress.progressStart();
 	}
 	public void callcustomer() {
-		RestaurantTask task = new RestaurantTask();
-		task.customerCreate();
 		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
-	}	
+	}   
 	//12-24 9시
 	public void cusToTable(int i) {
 		RestaurantTask task = new RestaurantTask();
@@ -94,6 +102,29 @@ public class GUIProgress  {
 			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
 			
 		}   
+	}
+	private void catchWorking() {
+		int size = progress.getClerks().length;
+		for(int count = 0; count < size; count++) {
+			Clerk clerk = progress.getClerk(count+1).getClerkStatus();
+			String clerkNum = String.valueOf(clerk.getClerkNum());
+			if(clerk.getClerkState() == ClerkState.takePayment) {
+				if(!(payhandleclerk.contains(clerkNum))) payhandleclerk += clerkNum + ",";
+			}else if(clerk.getClerkState() == ClerkState.takeOrder) {
+				if(!(reqhandleclerk.contains(clerkNum))) reqhandleclerk += clerkNum + ",";
+			}else if(clerk.getClerkState() == ClerkState.takeClearTable) {
+				if(!(cleantable.contains(clerkNum))) cleantable += clerkNum + ",";
+			}else {
+				if(payhandleclerk.contains(clerkNum)) {
+					payhandleclerk = payhandleclerk.replace(clerkNum+",", "");
+				}else if(reqhandleclerk.contains(clerkNum)) {
+					reqhandleclerk = reqhandleclerk.replaceAll(clerkNum+",", "");
+				}else if(cleantable.contains(clerkNum)) {
+					cleantable = cleantable.replace(clerkNum+",","");
+					
+				}
+			}
+		}
 	}
 	//12-24 9시
 	public void init() {
@@ -109,9 +140,9 @@ public class GUIProgress  {
 		payWaitLine.setText("결제 대기 줄 :" + paywaitline);
 		ordReqLine.setText("요청 대기 줄 :" + ordreqline);
 		clerkWaitLine.setText("직원 대기 줄 :" + clerkwaitline);
-		cleanTable.setText("테이블 정리 직원  :" + cleantable);
-		payHandleClerk.setText("결제 처리 직원 :" + payhandleclerk);
-		reqHandleClerk.setText("요청 처리 직원 :" + reqhandleclerk);
+		cleanTable.setText("테이블 정리 직원  :" + ((cleantable.length() == 0)? cleantable : cleantable.substring(0,cleantable.length()-1)));
+		payHandleClerk.setText("결제 처리 직원 :" + ((payhandleclerk.length() == 0)? payhandleclerk : payhandleclerk.substring(0, payhandleclerk.length()-1)));
+		reqHandleClerk.setText("요청 처리 직원 :" + ((reqhandleclerk.length() == 0)? reqhandleclerk : reqhandleclerk.substring(0, reqhandleclerk.length()-1)));
 		compressionDegree.setText("압박 정도 :" + compressiondegree);
 		
 		for(int i=0; i<Option.tableNumber;i++) {

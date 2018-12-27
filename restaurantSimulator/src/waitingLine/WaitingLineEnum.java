@@ -3,6 +3,7 @@ package waitingLine;
 public enum WaitingLineEnum {
 	CLERKWAITINGLINE, CUSTOMERWAITINGLINE, ORDERREQUESTLINE, PAYMENTWAITINGLINE;
 	
+
 	public int getWaitTime() {
 		int first = 0;
 		switch(this) {

@@ -31,14 +31,12 @@ public class ResultWindow {
 	
 	private TimeOperation timeOperation;
 	private ResultDTO result;
-	private WaitingLines wl;
 	
 	public ResultWindow(GUIMain frame) {
 		
 		this.frame = frame;
 		this.frame.setContentPane(resultwindow);
 		
-		wl = new WaitingLines();
 		toMain.addActionListener(new returnMain());
 		timeOperation = TimeOperation.getInstance();
 		timeOperation.inputResultToResultDTO();
@@ -65,12 +63,14 @@ public class ResultWindow {
 		cusMaxWaitingTime.setBounds(500, 205, 300, 100);
 		cusAvgWaitingTime.setBounds(500, 240, 300, 100);
 		clerkMaxWaitingTime.setBounds(500, 275, 300, 100);
-		payMaxWaitingTime.setBounds(500, 310, 300, 100);
-		payAvgWaitingTime.setBounds(500, 345, 300, 100);
-		reqMaxWaitingTime.setBounds(500, 380, 300, 100);
-		reqAvgWaitingTime.setBounds(500, 415, 300, 100);
+		clerkAvgWaitingTime.setBounds(500, 310, 300 , 100);
+		payMaxWaitingTime.setBounds(500, 345, 300, 100);
+		payAvgWaitingTime.setBounds(500, 380, 300, 100);
+		reqMaxWaitingTime.setBounds(500, 415, 300, 100);
+		reqAvgWaitingTime.setBounds(500, 450, 300, 100);
 		
-		toMain.setBounds(500, 470, 200, 100);
+		
+		toMain.setBounds(500, 510, 130, 100);
 		
 		
 		resultwindow.add(compressionDegree);

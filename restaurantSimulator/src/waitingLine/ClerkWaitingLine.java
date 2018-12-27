@@ -27,4 +27,12 @@ public class ClerkWaitingLine extends WaitingLine<Clerk> {
 	public boolean removeLine(Clerk index) {
 		return super.removeLine(index, index.getClerkWaitTime());
 	}
+
+	@Override
+	public synchronized Clerk pop() {
+		// TODO Auto-generated method stub
+		this.getCountList().add(this.getWaitList().get(0).getClerkWaitTime());
+		return super.pop();
+	}
+	
 }

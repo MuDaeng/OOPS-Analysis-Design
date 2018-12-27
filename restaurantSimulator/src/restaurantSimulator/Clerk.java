@@ -47,10 +47,12 @@ public class Clerk {
 	}
 	//직원이 일을 처리할 때 3초가 걸리고 능력이 좋을 수록 더 빨라짐
 	public Clerk handleTask() {
-		if(this.clerkState == ClerkState.notWorking) {	
+		if(this.clerkState != ClerkState.notWorking) {	
 			try {
 				long takeWorkTime = 3000;
-				Thread.sleep(takeWorkTime/(this.ability+this.experienced));			
+				synchronized(Progress.getInstance().getClerk(clerkNum)) {
+					Progress.getInstance().getClerk(clerkNum).wait((takeWorkTime/(ability+experienced)));	
+				}
 			}catch(InterruptedException ie) {}
 		}		
 		return this;

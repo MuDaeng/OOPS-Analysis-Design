@@ -12,6 +12,7 @@ public class Progress {
 	private PaymentWaitingLine paymentWaitingLine;
 	private Thread requestThread;
 	private Thread paymentThread;
+	private Thread cleanThread;
 	private List<Thread> tableList;
 	private List<Thread> clerkList;
 	
@@ -26,6 +27,7 @@ public class Progress {
 		paymentWaitingLine = PaymentWaitingLine.getInstance();
 		requestThread = new Thread(new RequestThread());
 		paymentThread = new Thread(new PaymentThread());
+		cleanThread = new Thread(new CleanThread());
 	}
 	public static Progress getInstance() {
 		return Singleton.instance;
@@ -63,8 +65,10 @@ public class Progress {
 	public void progressStart() {
 		requestThread.setDaemon(true);
 		paymentThread.setDaemon(true);
+		cleanThread.setDaemon(true);
 		requestThread.start();
 		paymentThread.start();
+		cleanThread.start();
 	}
 	
 	public ClerkThread[] getClerks() {
@@ -73,10 +77,30 @@ public class Progress {
 	public TableThread[] getTables() {
 		return tables;
 	}
-	
+	public void callcustomer(int customerPressure) {
+		RestaurantTask task = new RestaurantTask();
+		int cusCreate = (int)(Math.random()*25+1);
+		if(cusCreate<Option.customerPressure*5)
+			task.customerCreate();
+//		cuswaitline = String.valueOf(waitingLines.getCustomerWaitingLine().getListSize());
+	}   
+	//12-24 9시
+	public void cusToTable(int i) {
+		RestaurantTask task = new RestaurantTask();
+//		Table tmp = progress.getTable(i+1).getTableStatus();
+		// if(tableArray[i]==Progress.getInstance().getTable(i).getTableStatus().getTableState().toString()) {
+//		if(tableArray[i].equals(TableState.isEmpty.toString())) {
+//			task.customertotable(tmp);
+//			tableArray[i]=tmp.getTableState().toString();
+//			task.addOrderLine(tmp);
+			//task.addOrderLine(Progress.getInstance().getTable(i).getTableStatus());
+			
+//		}   
+	}
 	public void end() {
 		requestThread.interrupt();
 		paymentThread.interrupt();
+		cleanThread.interrupt();
 		for(int count = 0; count < tableList.size(); count++) {
 			tableList.get(count).interrupt();
 		}

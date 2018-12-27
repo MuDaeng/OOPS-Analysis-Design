@@ -18,6 +18,9 @@ public class RestaurantTask {
 	public void addOrderLine(Table table) {
 		waitingLines.getOrderRequestLine().addLine(table);
 	}
+	public void addPayLine(Table table) {
+		waitingLines.getPaymentWaitingLine().addLine(table);
+	}
 	public void resolveOrder() {
 		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
 		Table table = waitingLines.getOrderRequestLine().pop();
@@ -49,6 +52,15 @@ public class RestaurantTask {
 		clerk.handleTask();
 		clerk.setClerkState(ClerkState.notWorking);
 		progress.getTable(table.getTableNum()).occupyCustomer(null);
+		waitingLines.getClerkWaitingLine().addLine(clerk);
+	}
+	public void cleanTable(int tableNum) {
+		Clerk clerk = waitingLines.getClerkWaitingLine().pop();
+		clerk.setClerkState(ClerkState.takeClearTable);
+		//작업
+		clerk.handleTask();
+		progress.getTable(tableNum).getTableStatus().setTableState(TableState.isEmpty);
+		clerk.setClerkState(ClerkState.notWorking);
 		waitingLines.getClerkWaitingLine().addLine(clerk);
 	}
 	public void customerCreate() {

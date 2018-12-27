@@ -20,22 +20,24 @@ public class RequestThread implements Runnable{
 			Timer timer = new Timer();
 			timer.schedule(new TimerTask() {
 				@Override
-				public void run() {
+				public synchronized void run() {
 					task.countReqWaitTime();
 				}
 			}, 1000, 1000 );
 			while(true) {
 				synchronized(this) {
 					if((ClerkWaitingLine.getInstance().getListSize() > 0) && (OrderRequestLine.getInstance().getListSize() > 0)) {
-						task.resolveOrder();
-						timer.cancel();
+						new Thread(() -> {
+							new RestaurantTask().resolveOrder();
+							timer.cancel();
+						} );
 						break;
 					}
-				}
-				try {
-					Thread.sleep(50);	//0.05초에 한번씩 직원라인이 비는지 검사한다.
-				}catch(InterruptedException ie) {
-					return;
+					try {
+						Thread.sleep(600);	//0.6초에 한번씩 직원라인이 비는지 검사한다.
+					}catch(InterruptedException ie) {
+						return;
+					}
 				}
 			}
 		}

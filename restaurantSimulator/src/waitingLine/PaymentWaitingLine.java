@@ -3,14 +3,11 @@ package waitingLine;
 import java.util.*;
 
 import restaurantSimulator.Table;
-import restaurantSimulator.Payment;
 
 public class PaymentWaitingLine extends WaitingLine<Table> {
-	private Payment payment;
-	
+
 	private PaymentWaitingLine () {
 		super(new ArrayList<Table>());
-		this.payment = new Payment();
 	}
 	private static class Singleton{
 		private static PaymentWaitingLine instance = new PaymentWaitingLine();
@@ -31,8 +28,5 @@ public class PaymentWaitingLine extends WaitingLine<Table> {
 		// TODO Auto-generated method stub
 		this.getCountList().add(this.getWaitList().get(0).getCustomer().getPayWaitTime());
 		return super.pop();
-	}
-	public Payment getPayment() {
-		return payment;
 	}
 }
